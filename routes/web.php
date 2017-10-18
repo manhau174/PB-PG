@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', 'IndexController@showAll')->name('home');
 
 Route::get('/profile', function () {
     return view('profile');
