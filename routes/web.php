@@ -34,6 +34,11 @@ Route::get('/profile', function () {
 })->name('profile');
 
 
+Route::get('/dashbord',function(){
+	return view('dashbord');
+})->name('admin');
+
+
 
 Route::group(['' => 'admin'], function(){
 
@@ -69,4 +74,6 @@ Route::get('logout','client\LoginController@getlogout')->name('logout');
 
 /*end route logout*/
 
+
+Route::resource('users','UserController');
 

@@ -45,7 +45,7 @@ $factory->define(App\Job::class, function (Faker $faker) {
         'description' => $faker->text(),
         'address' => $faker->address,
         'salary' => $faker->numberBetween($min = 500000, $max = 5000000),
-        'time'  => $faker->dateTimeAD($max ='now'),
+        'time'  => $faker->dateTime($max ='now'),
         'company_id' => $faker->biasedNumberBetween($min = 1,$max = 10),
     ];
 });
