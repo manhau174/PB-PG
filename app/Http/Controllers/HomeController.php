@@ -27,6 +27,8 @@ class HomeController extends Controller
         return view('home');
     }
 
-
+    public function getIndex(){
+        return view('dashbord');
+    }
 }
 

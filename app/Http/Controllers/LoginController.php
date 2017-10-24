@@ -20,7 +20,7 @@ class LoginController extends Controller
     public function postLogin(Request $request) {
     	$rules = [
     		'email' =>'required|email',
-    		'password' => 'required|min:8'
+    		'password' => 'required|min:6'
     	];
     	$messages = [
     		'email.required' => 'Email là trường bắt buộc',
@@ -39,7 +39,7 @@ class LoginController extends Controller
 
     		$user = User::getUserBy($email);
     		
-       		if( Auth::attempt(['email' => $email, 'password' =>$password, 'permission' => 0]) ) {
+       		if( Auth::attempt(['email' => $email, 'password' =>$password, 'permission' => 1]) ) {
     			return redirect()->intended('accept');
     		} else {
     			$errors = new MessageBag(['errorlogin' => 'Email hoặc mật khẩu không đúng']);
