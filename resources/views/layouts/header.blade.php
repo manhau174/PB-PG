@@ -30,7 +30,11 @@
 <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
 
 <!-- Google Fonts -->
+
 <link href='{{ asset('http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico') }}' rel='stylesheet' type='text/css'>
+
+<link href='https://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
+
 </head>
 
 <body class="cms-index-index">
@@ -87,6 +91,7 @@
                 <!-- End Header Company -->
 
 
+                <div class="login"><a href="#"><span>Log In</span></a></div>
                   
 
 

@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use DB;
 
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -28,7 +29,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-       public static function getUserBy($email){
+    public static function getAll(){
+        return DB::table('users')->get();
+
+    }
+    public static function getUserByID($id){
         
         return DB::table('users')->where('email',$email)->first();
     }

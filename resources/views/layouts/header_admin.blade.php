@@ -59,6 +59,33 @@
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
+		<!-- Latest compiled and minified CSS & JS -->
+		<script src="https://code.jquery.com/jquery.js"></script>
+<!-- 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script src="{{asset('assets/js/jquery-2.1.4.min.js')}}"></script> -->
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='{{asset('assets/js/jquery.mobile.custom.min.js')}}'>"+"<"+"/script>");
+		</script>
+		<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+		<script src="{{asset('assets/js/jquery-ui.custom.min.js')}}"></script>
+		<script src="{{asset('assets/js/jquery.ui.touch-punch.min.js')}}"></script>
+		<script src="{{asset('assets/js/jquery.easypiechart.min.js')}}"></script>
+		<script src="{{asset('assets/js/jquery.sparkline.index.min.js')}}"></script>
+		<script src="{{asset('assets/js/jquery.flot.min.js')}}"></script>
+		<script src="{{asset('assets/js/jquery.flot.pie.min.js')}}"></script>
+		<script src="{{asset('assets/js/jquery.flot.resize.min.js')}}"></script>
+		<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+		<!-- ace scripts -->
+		<script src="{{asset('assets/js/ace-elements.min.js')}}"></script>
+		<script src="{{asset('assets/js/ace.min.js')}}"></script>
+		<script type="text/javascript">
+			$.ajaxSetup({
+			    headers: {
+			        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			    }
+			});
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 	</head>
 
 	<body class="no-skin">

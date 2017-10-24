@@ -42,12 +42,14 @@
 <script src="assets/js/jquery-1.11.3.min.js"></script>
 <![endif]-->
 
+
 		<!-- page specific plugin scripts -->
 
 		<!--[if lte IE 8]>
 		  <script src="assets/js/excanvas.min.js"></script>
 		<![endif]-->
 		
+
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 			jQuery(function($) {

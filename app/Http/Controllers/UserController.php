@@ -36,7 +36,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        User::store($data);
+        return response()->json([
+            'error' => 0,
+        ]);
     }
 
     /**
@@ -59,7 +63,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        
+        $user = User::find($user->id)->first();
+        return view('users.users_edit',['user' => $user]);
     }
 
     /**
@@ -71,7 +76,11 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $data = $request->all();
+        User::find($user->id)->update($data);
+        return response()->json([
+            'error' => 0,
+        ]);
     }
 
     /**

@@ -1,4 +1,4 @@
-{{-- {{dd($pgs)}} --}}
+
 @extends('layouts.header')
 
 @section('content')
