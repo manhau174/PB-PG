@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', 'IndexController@showAll')->name('home');
 
 Route::get('/profile', function () {
     return view('profile');
@@ -79,3 +77,4 @@ Route::get('logout','client\LoginController@getlogout')->name('logout');
 
 Route::resource('users','UserController');
 
+Route::resource('/updatePbPg', 'PbPgController');

@@ -70,7 +70,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Offer Banner  --> 
   
   <!-- main container -->

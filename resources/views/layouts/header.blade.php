@@ -22,12 +22,13 @@
 
 <!-- CSS Style -->
 <!--<link rel="stylesheet" href="css/animate.css" type="text/css">-->
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="css/slider.css" type="text/css">
-<link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
-<link rel="stylesheet" href="css/owl.theme.css" type="text/css">
-<link rel="stylesheet" href="css/font-awesome.css" type="text/css">
-<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/slider.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/owl.theme.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" type="text/css">
 
 <!-- Google Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
@@ -45,9 +46,9 @@
             <!-- Header Language -->
             <div class="dropdown block-language-wrapper"> <a role="button" data-toggle="dropdown" data-target="#" class="block-language dropdown-toggle" href="#"> <img src="images/english.png" alt="language"> English <i class="icon-angle-down"></i> </a>
               <ul class="dropdown-menu" role="menu">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="images/english.png" alt="language"> English </a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="images/francais.png" alt="language"> French </a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="images/german.png" alt="language"> German </a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="{{ asset('/images/english.png') }}" alt="language"> English </a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="{{ asset('/images/francais.png') }}" alt="language"> French </a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><img src="{{ asset('/images/german.png') }}" alt="language"> German </a></li>
               </ul>
             </div>
             
@@ -86,8 +87,6 @@
                 </div>
                 <!-- End Header Company -->
 
-                <div class="login"><a href="#"><span>Log In</span></a></div>
-
                   
 
 
@@ -99,6 +98,14 @@
                               {{ Auth::user()->name }} <span class="caret"></span>
                           </a>
                     <ul class="dropdown-menu" role="menu">
+                     {{--  @if (Auth::user()->permission == 3)
+                          <li>
+                              <a href="{{ route('updatePbPg.create') }}">
+                                  Update thong tin
+                              </a>
+
+                          </li>
+                      @endif --}}
                       <li role="presentation">
                         <a href="{{ route('logout') }}">
                             Logout
@@ -448,147 +455,283 @@
               <li class="level1 parent"><a href="http://htmldemo.magikcommerce.com/ecommerce/accord_html/full-width/green/index.html"><span>Green Color</span></a> </li>
             </ul> -->
           </li>
-          <li class="level0 parent drop-menu"><a href="#"><span>Công việc</span> </a>
-            <!-- <ul style="display: none;" class="level1">
-              <li class="level1 first"><a href="grid.html"><span>Grid</span></a></li>
-              <li class="level1 nav-10-2"> <a href="list.html"> <span>List</span> </a> </li>
-              <li class="level1 nav-10-3"> <a href="product_detail.html"> <span>Product Detail</span> </a> </li>
-              <li class="level1 nav-10-4"> <a href="shopping_cart.html"> <span>Shopping Cart</span> </a> </li>
-              <li class="level1 first parent"><a href="checkout.html"><span>Checkout</span></a>
-                <ul class="level2">
-                  <li class="level2 nav-2-1-1 first"><a href="checkout_method.html"><span>Checkout Method</span></a></li>
-                  <li class="level2 nav-2-1-5 last"><a href="checkout_billing_info.html"><span>Checkout Billing Info</span></a></li>
-                </ul>
+          @guest
+                <!-- <ul style="display: none;" class="level1">
+                  <li class="level1 first"><a href="grid.html"><span>Grid</span></a></li>
+                  <li class="level1 nav-10-2"> <a href="list.html"> <span>List</span> </a> </li>
+                  <li class="level1 nav-10-3"> <a href="product_detail.html"> <span>Product Detail</span> </a> </li>
+                  <li class="level1 nav-10-4"> <a href="shopping_cart.html"> <span>Shopping Cart</span> </a> </li>
+                  <li class="level1 first parent"><a href="checkout.html"><span>Checkout</span></a>
+                    <ul class="level2">
+                      <li class="level2 nav-2-1-1 first"><a href="checkout_method.html"><span>Checkout Method</span></a></li>
+                      <li class="level2 nav-2-1-5 last"><a href="checkout_billing_info.html"><span>Checkout Billing Info</span></a></li>
+                    </ul>
+                  </li>
+                  <li class="level1 nav-10-4"> <a href="wishlist.html"> <span>Wishlist</span> </a> </li>
+                  <li class="level1"> <a href="dashboard.html"> <span>Dashboard</span> </a> </li>
+                  <li class="level1"> <a href="multiple_addresses.html"> <span>Multiple Addresses</span> </a> </li>
+                  <li class="level1"> <a href="about_us.html"> <span>About us</span> </a> </li>
+                  <li class="level1"> <a href="login.html"> <span>Login</span> </a> </li>
+                  <li class="level1"> <a href="compare.html"> <span>Compare</span> </a> </li>
+                  <li class="level1"> <a href="delivery.html"> <span>Delivery</span> </a> </li>
+                  <li class="level1"> <a href="faq.html"> <span>FAQ</span> </a> </li>
+                  <li class="level1"> <a href="quick_view.html"> <span>Quick view </span> </a> </li>
+                  <li class="level1"> <a href="newsletter.html"> <span>Newsletter</span> </a> </li>
+                  <li class="level1 first parent"><a href="blog.html"><span>Blog</span></a>
+                    <ul class="level2">
+                      <li class="level2 nav-2-1-1 first"><a href="blog_detail.html"><span>Blog Detail</span></a></li>
+                    </ul>
+                  </li>
+                  <li class="level1"><a href="contact_us.html"><span>Contact us</span></a> </li>
+                  <li class="level1"><a href="404error.html"><span>404 Error Page</span></a> </li>
+                </ul> -->
               </li>
-              <li class="level1 nav-10-4"> <a href="wishlist.html"> <span>Wishlist</span> </a> </li>
-              <li class="level1"> <a href="dashboard.html"> <span>Dashboard</span> </a> </li>
-              <li class="level1"> <a href="multiple_addresses.html"> <span>Multiple Addresses</span> </a> </li>
-              <li class="level1"> <a href="about_us.html"> <span>About us</span> </a> </li>
-              <li class="level1"> <a href="login.html"> <span>Login</span> </a> </li>
-              <li class="level1"> <a href="compare.html"> <span>Compare</span> </a> </li>
-              <li class="level1"> <a href="delivery.html"> <span>Delivery</span> </a> </li>
-              <li class="level1"> <a href="faq.html"> <span>FAQ</span> </a> </li>
-              <li class="level1"> <a href="quick_view.html"> <span>Quick view </span> </a> </li>
-              <li class="level1"> <a href="newsletter.html"> <span>Newsletter</span> </a> </li>
-              <li class="level1 first parent"><a href="blog.html"><span>Blog</span></a>
-                <ul class="level2">
-                  <li class="level2 nav-2-1-1 first"><a href="blog_detail.html"><span>Blog Detail</span></a></li>
-                </ul>
+              <li class="level0 nav-7 level-top parent"> <a href="{{route('pb')}}" class="level-top"> <span>PB</span> </a>
+                <!-- <div style="display: none; left: 0px;" class="level0-wrapper dropdown-6col">
+                  <div class="level0-wrapper2">
+                    <div class="nav-block nav-block-center">
+                      <ul class="level0">
+                        <li class="level1 nav-7-1 first parent item"> <a href="grid.html"> <span>Gents Purses</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-7-3-15 first"> <a href="grid.html"> <span>Digital Cameras</span> </a> </li>
+                            <li class="level2 nav-7-3-16"> <a href="grid.html"> <span>Camcorders</span> </a> </li>
+                            <li class="level2 nav-7-3-17"> <a href="grid.html"> <span>Lenses</span> </a> </li>
+                            <li class="level2 nav-7-3-18"> <a href="grid.html"> <span>Filters</span> </a> </li>
+                            <li class="level2 nav-7-3-19 last"> <a href="grid.html"> <span>Tripods</span> </a> </li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-7-3 parent item"> <a href="grid.html"> <span>Gents Purses</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-7-3-15 first"> <a href="grid.html"> <span>Digital Cameras</span> </a> </li>
+                            <li class="level2 nav-7-3-16"> <a href="grid.html"> <span>Camcorders</span> </a> </li>
+                            <li class="level2 nav-7-3-17"> <a href="grid.html"> <span>Lenses</span> </a> </li>
+                            <li class="level2 nav-7-3-18"> <a href="grid.html"> <span>Filters</span> </a> </li>
+                            <li class="level2 nav-7-3-19 last"> <a href="grid.html"> <span>Tripods</span> </a> </li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-7-3 parent item"> <a href="grid.html"> <span>Gents Purses</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-7-3-15 first"> <a href="grid.html"> <span>Digital Cameras</span> </a> </li>
+                            <li class="level2 nav-7-3-16"> <a href="grid.html"> <span>Camcorders</span> </a> </li>
+                            <li class="level2 nav-7-3-17"> <a href="grid.html"> <span>Lenses</span> </a> </li>
+                            <li class="level2 nav-7-3-18"> <a href="grid.html"> <span>Filters</span> </a> </li>
+                            <li class="level2 nav-7-3-19 last"> <a href="grid.html"> <span>Tripods</span> </a> </li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-7-4 parent item"> <a href="grid.html"> <span>Gifts</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-7-2-8 first"> <a href="grid.html"> <span>Headsets</span> </a> </li>
+                            <li class="level2 nav-7-2-9"> <a href="grid.html"> <span>Batteries</span> </a> </li>
+                            <li class="level2 nav-7-2-10"> <a href="grid.html"> <span>Screen Protectors</span> </a> </li>
+                            <li class="level2 nav-7-2-11"> <a href="grid.html"> <span>Memory Cards</span> </a> </li>
+                            <li class="level2 nav-7-2-14 last"> <a href="grid.html"> <span>Cases</span> </a> </li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-7-4 last parent item"> <a href="grid.html"> <span>Accessories</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-7-2-8 first"> <a href="grid.html"> <span>Headsets</span> </a> </li>
+                            <li class="level2 nav-7-2-9"> <a href="grid.html"> <span>Batteries</span> </a> </li>
+                            <li class="level2 nav-7-2-10"> <a href="grid.html"> <span>Screen Protectors</span> </a> </li>
+                            <li class="level2 nav-7-2-11"> <a href="grid.html"> <span>Memory Cards</span> </a> </li>
+                            <li class="level2 nav-7-2-14 last"> <a href="grid.html"> <span>Cases</span> </a> </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div> -->
               </li>
-              <li class="level1"><a href="contact_us.html"><span>Contact us</span></a> </li>
-              <li class="level1"><a href="404error.html"><span>404 Error Page</span></a> </li>
-            </ul> -->
-          </li>
-          <li class="level0 nav-7 level-top parent"> <a href="{{route('pb')}}" class="level-top"> <span>PB</span> </a>
-            <!-- <div style="display: none; left: 0px;" class="level0-wrapper dropdown-6col">
-              <div class="level0-wrapper2">
-                <div class="nav-block nav-block-center">
-                  <ul class="level0">
-                    <li class="level1 nav-7-1 first parent item"> <a href="grid.html"> <span>Gents Purses</span> </a>
-                      <ul class="level1">
-                        <li class="level2 nav-7-3-15 first"> <a href="grid.html"> <span>Digital Cameras</span> </a> </li>
-                        <li class="level2 nav-7-3-16"> <a href="grid.html"> <span>Camcorders</span> </a> </li>
-                        <li class="level2 nav-7-3-17"> <a href="grid.html"> <span>Lenses</span> </a> </li>
-                        <li class="level2 nav-7-3-18"> <a href="grid.html"> <span>Filters</span> </a> </li>
-                        <li class="level2 nav-7-3-19 last"> <a href="grid.html"> <span>Tripods</span> </a> </li>
+              <li class="level0 nav-6 level-top parent"> <a href="{{route('pg')}}" class="level-top"> <span>PG</span> </a>
+                <!-- <div style="display: none; left: 0px;" class="level0-wrapper dropdown-6col">
+                  <div class="level0-wrapper2">
+                    <div class="nav-block nav-block-center grid13-8 itemgrid itemgrid-4col">
+                      <ul class="level0">
+                        <li class="level1 nav-6-3 parent item"> <a href="grid.html"> <span>Shoes </span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-6-3-9 first"> <a href="grid.html"> <span>Flat Shoes</span> </a> </li>
+                            <li class="level2 nav-6-3-10"> <a href="grid.html"> <span>Flat Sandals</span> </a> </li>
+                            <li class="level2 nav-6-3-11"> <a href="grid.html"> <span>Boots</span> </a> </li>
+                            <li class="level2 nav-6-3-11"> <a href="grid.html"> <span>Boots</span> </a> </li>
+                            <li class="level2 nav-6-3-12 last"> <a href="grid.html"> <span>Heels</span> </a> </li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-6-4 parent item"> <a href="grid.html"> <span>Jewelry</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-6-4-13 first"> <a href="grid.html"> <span>Bracelets</span> </a> </li>
+                            <li class="level2 nav-6-4-14"> <a href="grid.html"> <span>Necklaces &amp; Pendants</span> </a> </li>
+                            <li class="level2 nav-6-4-14"> <a href="grid.html"> <span>Necklaces</span> </a> </li>
+                            <li class="level2 nav-6-4-14"> <a href="grid.html"> <span>Pendants</span> </a> </li>
+                            <li class="level2 nav-6-4-15 last"> <a href="grid.html"> <span>Pins &amp; Brooches</span> </a> </li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-6-5 parent item"> <a href="grid.html"> <span>Dresses</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-6-5-16 first"> <a href="grid.html"> <span>Casual Dresses</span> </a> </li>
+                            <li class="level2 nav-6-5-17"> <a href="grid.html"> <span>Evening</span> </a> </li>
+                            <li class="level2 nav-6-5-18"> <a href="grid.html"> <span>Designer</span> </a> </li>
+                            <li class="level2 nav-6-5-18"> <a href="grid.html"> <span>Designer</span> </a> </li>
+                            <li class="level2 nav-6-5-19 last"> <a href="grid.html"> <span>Party</span> </a> </li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-6-6 last parent item"> <a href="grid.html"> <span>Jackets</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-6-7-24 first"> <a href="grid.html"> <span>Coats</span> </a> </li>
+                            <li class="level2 nav-6-7-25"> <a href="grid.html"> <span>Jackets</span> </a> </li>
+                            <li class="level2 nav-6-7-26"> <a href="grid.html"> <span>Leather Jackets</span> </a> </li>
+                            <li class="level2 nav-6-7-26"> <a href="grid.html"> <span>Leather Jackets</span> </a> </li>
+                            <li class="level2 nav-6-7-27 last"> <a href="grid.html"> <span>Blazers</span> </a> </li>
+                          </ul>
+                        </li>
                       </ul>
-                    </li>
-                    <li class="level1 nav-7-3 parent item"> <a href="grid.html"> <span>Gents Purses</span> </a>
-                      <ul class="level1">
-                        <li class="level2 nav-7-3-15 first"> <a href="grid.html"> <span>Digital Cameras</span> </a> </li>
-                        <li class="level2 nav-7-3-16"> <a href="grid.html"> <span>Camcorders</span> </a> </li>
-                        <li class="level2 nav-7-3-17"> <a href="grid.html"> <span>Lenses</span> </a> </li>
-                        <li class="level2 nav-7-3-18"> <a href="grid.html"> <span>Filters</span> </a> </li>
-                        <li class="level2 nav-7-3-19 last"> <a href="grid.html"> <span>Tripods</span> </a> </li>
+                    </div>
+                    <div class="nav-block nav-block-right std grid12-3"> <a class="product-image" title="Stablished fact reader" href="#"> <img alt="Stablished fact reader" src="products-images/product2.jpg" width="150"></a>
+                      <div class="item-title"> <a href="#" title="Sample Product"> Sample Product </a> </div>
+                      <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
+                    </div>
+                  </div>
+                </div> -->
+              </li>
+            @else
+            @if (Auth::user()->permission != 3)
+
+                <!-- <ul style="display: none;" class="level1">
+                  <li class="level1 first"><a href="grid.html"><span>Grid</span></a></li>
+                  <li class="level1 nav-10-2"> <a href="list.html"> <span>List</span> </a> </li>
+                  <li class="level1 nav-10-3"> <a href="product_detail.html"> <span>Product Detail</span> </a> </li>
+                  <li class="level1 nav-10-4"> <a href="shopping_cart.html"> <span>Shopping Cart</span> </a> </li>
+                  <li class="level1 first parent"><a href="checkout.html"><span>Checkout</span></a>
+                    <ul class="level2">
+                      <li class="level2 nav-2-1-1 first"><a href="checkout_method.html"><span>Checkout Method</span></a></li>
+                      <li class="level2 nav-2-1-5 last"><a href="checkout_billing_info.html"><span>Checkout Billing Info</span></a></li>
+                    </ul>
+                  </li>
+                  <li class="level1 nav-10-4"> <a href="wishlist.html"> <span>Wishlist</span> </a> </li>
+                  <li class="level1"> <a href="dashboard.html"> <span>Dashboard</span> </a> </li>
+                  <li class="level1"> <a href="multiple_addresses.html"> <span>Multiple Addresses</span> </a> </li>
+                  <li class="level1"> <a href="about_us.html"> <span>About us</span> </a> </li>
+                  <li class="level1"> <a href="login.html"> <span>Login</span> </a> </li>
+                  <li class="level1"> <a href="compare.html"> <span>Compare</span> </a> </li>
+                  <li class="level1"> <a href="delivery.html"> <span>Delivery</span> </a> </li>
+                  <li class="level1"> <a href="faq.html"> <span>FAQ</span> </a> </li>
+                  <li class="level1"> <a href="quick_view.html"> <span>Quick view </span> </a> </li>
+                  <li class="level1"> <a href="newsletter.html"> <span>Newsletter</span> </a> </li>
+                  <li class="level1 first parent"><a href="blog.html"><span>Blog</span></a>
+                    <ul class="level2">
+                      <li class="level2 nav-2-1-1 first"><a href="blog_detail.html"><span>Blog Detail</span></a></li>
+                    </ul>
+                  </li>
+                  <li class="level1"><a href="contact_us.html"><span>Contact us</span></a> </li>
+                  <li class="level1"><a href="404error.html"><span>404 Error Page</span></a> </li>
+                </ul> -->
+              </li>
+              <li class="level0 nav-7 level-top parent"> <a href="{{route('pb')}}" class="level-top"> <span>PB</span> </a>
+                <!-- <div style="display: none; left: 0px;" class="level0-wrapper dropdown-6col">
+                  <div class="level0-wrapper2">
+                    <div class="nav-block nav-block-center">
+                      <ul class="level0">
+                        <li class="level1 nav-7-1 first parent item"> <a href="grid.html"> <span>Gents Purses</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-7-3-15 first"> <a href="grid.html"> <span>Digital Cameras</span> </a> </li>
+                            <li class="level2 nav-7-3-16"> <a href="grid.html"> <span>Camcorders</span> </a> </li>
+                            <li class="level2 nav-7-3-17"> <a href="grid.html"> <span>Lenses</span> </a> </li>
+                            <li class="level2 nav-7-3-18"> <a href="grid.html"> <span>Filters</span> </a> </li>
+                            <li class="level2 nav-7-3-19 last"> <a href="grid.html"> <span>Tripods</span> </a> </li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-7-3 parent item"> <a href="grid.html"> <span>Gents Purses</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-7-3-15 first"> <a href="grid.html"> <span>Digital Cameras</span> </a> </li>
+                            <li class="level2 nav-7-3-16"> <a href="grid.html"> <span>Camcorders</span> </a> </li>
+                            <li class="level2 nav-7-3-17"> <a href="grid.html"> <span>Lenses</span> </a> </li>
+                            <li class="level2 nav-7-3-18"> <a href="grid.html"> <span>Filters</span> </a> </li>
+                            <li class="level2 nav-7-3-19 last"> <a href="grid.html"> <span>Tripods</span> </a> </li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-7-3 parent item"> <a href="grid.html"> <span>Gents Purses</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-7-3-15 first"> <a href="grid.html"> <span>Digital Cameras</span> </a> </li>
+                            <li class="level2 nav-7-3-16"> <a href="grid.html"> <span>Camcorders</span> </a> </li>
+                            <li class="level2 nav-7-3-17"> <a href="grid.html"> <span>Lenses</span> </a> </li>
+                            <li class="level2 nav-7-3-18"> <a href="grid.html"> <span>Filters</span> </a> </li>
+                            <li class="level2 nav-7-3-19 last"> <a href="grid.html"> <span>Tripods</span> </a> </li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-7-4 parent item"> <a href="grid.html"> <span>Gifts</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-7-2-8 first"> <a href="grid.html"> <span>Headsets</span> </a> </li>
+                            <li class="level2 nav-7-2-9"> <a href="grid.html"> <span>Batteries</span> </a> </li>
+                            <li class="level2 nav-7-2-10"> <a href="grid.html"> <span>Screen Protectors</span> </a> </li>
+                            <li class="level2 nav-7-2-11"> <a href="grid.html"> <span>Memory Cards</span> </a> </li>
+                            <li class="level2 nav-7-2-14 last"> <a href="grid.html"> <span>Cases</span> </a> </li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-7-4 last parent item"> <a href="grid.html"> <span>Accessories</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-7-2-8 first"> <a href="grid.html"> <span>Headsets</span> </a> </li>
+                            <li class="level2 nav-7-2-9"> <a href="grid.html"> <span>Batteries</span> </a> </li>
+                            <li class="level2 nav-7-2-10"> <a href="grid.html"> <span>Screen Protectors</span> </a> </li>
+                            <li class="level2 nav-7-2-11"> <a href="grid.html"> <span>Memory Cards</span> </a> </li>
+                            <li class="level2 nav-7-2-14 last"> <a href="grid.html"> <span>Cases</span> </a> </li>
+                          </ul>
+                        </li>
                       </ul>
-                    </li>
-                    <li class="level1 nav-7-3 parent item"> <a href="grid.html"> <span>Gents Purses</span> </a>
-                      <ul class="level1">
-                        <li class="level2 nav-7-3-15 first"> <a href="grid.html"> <span>Digital Cameras</span> </a> </li>
-                        <li class="level2 nav-7-3-16"> <a href="grid.html"> <span>Camcorders</span> </a> </li>
-                        <li class="level2 nav-7-3-17"> <a href="grid.html"> <span>Lenses</span> </a> </li>
-                        <li class="level2 nav-7-3-18"> <a href="grid.html"> <span>Filters</span> </a> </li>
-                        <li class="level2 nav-7-3-19 last"> <a href="grid.html"> <span>Tripods</span> </a> </li>
+                    </div>
+                  </div>
+                </div> -->
+              </li>
+              <li class="level0 nav-6 level-top parent"> <a href="{{route('pg')}}" class="level-top"> <span>PG</span> </a>
+                <!-- <div style="display: none; left: 0px;" class="level0-wrapper dropdown-6col">
+                  <div class="level0-wrapper2">
+                    <div class="nav-block nav-block-center grid13-8 itemgrid itemgrid-4col">
+                      <ul class="level0">
+                        <li class="level1 nav-6-3 parent item"> <a href="grid.html"> <span>Shoes </span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-6-3-9 first"> <a href="grid.html"> <span>Flat Shoes</span> </a> </li>
+                            <li class="level2 nav-6-3-10"> <a href="grid.html"> <span>Flat Sandals</span> </a> </li>
+                            <li class="level2 nav-6-3-11"> <a href="grid.html"> <span>Boots</span> </a> </li>
+                            <li class="level2 nav-6-3-11"> <a href="grid.html"> <span>Boots</span> </a> </li>
+                            <li class="level2 nav-6-3-12 last"> <a href="grid.html"> <span>Heels</span> </a> </li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-6-4 parent item"> <a href="grid.html"> <span>Jewelry</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-6-4-13 first"> <a href="grid.html"> <span>Bracelets</span> </a> </li>
+                            <li class="level2 nav-6-4-14"> <a href="grid.html"> <span>Necklaces &amp; Pendants</span> </a> </li>
+                            <li class="level2 nav-6-4-14"> <a href="grid.html"> <span>Necklaces</span> </a> </li>
+                            <li class="level2 nav-6-4-14"> <a href="grid.html"> <span>Pendants</span> </a> </li>
+                            <li class="level2 nav-6-4-15 last"> <a href="grid.html"> <span>Pins &amp; Brooches</span> </a> </li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-6-5 parent item"> <a href="grid.html"> <span>Dresses</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-6-5-16 first"> <a href="grid.html"> <span>Casual Dresses</span> </a> </li>
+                            <li class="level2 nav-6-5-17"> <a href="grid.html"> <span>Evening</span> </a> </li>
+                            <li class="level2 nav-6-5-18"> <a href="grid.html"> <span>Designer</span> </a> </li>
+                            <li class="level2 nav-6-5-18"> <a href="grid.html"> <span>Designer</span> </a> </li>
+                            <li class="level2 nav-6-5-19 last"> <a href="grid.html"> <span>Party</span> </a> </li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-6-6 last parent item"> <a href="grid.html"> <span>Jackets</span> </a>
+                          <ul class="level1">
+                            <li class="level2 nav-6-7-24 first"> <a href="grid.html"> <span>Coats</span> </a> </li>
+                            <li class="level2 nav-6-7-25"> <a href="grid.html"> <span>Jackets</span> </a> </li>
+                            <li class="level2 nav-6-7-26"> <a href="grid.html"> <span>Leather Jackets</span> </a> </li>
+                            <li class="level2 nav-6-7-26"> <a href="grid.html"> <span>Leather Jackets</span> </a> </li>
+                            <li class="level2 nav-6-7-27 last"> <a href="grid.html"> <span>Blazers</span> </a> </li>
+                          </ul>
+                        </li>
                       </ul>
-                    </li>
-                    <li class="level1 nav-7-4 parent item"> <a href="grid.html"> <span>Gifts</span> </a>
-                      <ul class="level1">
-                        <li class="level2 nav-7-2-8 first"> <a href="grid.html"> <span>Headsets</span> </a> </li>
-                        <li class="level2 nav-7-2-9"> <a href="grid.html"> <span>Batteries</span> </a> </li>
-                        <li class="level2 nav-7-2-10"> <a href="grid.html"> <span>Screen Protectors</span> </a> </li>
-                        <li class="level2 nav-7-2-11"> <a href="grid.html"> <span>Memory Cards</span> </a> </li>
-                        <li class="level2 nav-7-2-14 last"> <a href="grid.html"> <span>Cases</span> </a> </li>
-                      </ul>
-                    </li>
-                    <li class="level1 nav-7-4 last parent item"> <a href="grid.html"> <span>Accessories</span> </a>
-                      <ul class="level1">
-                        <li class="level2 nav-7-2-8 first"> <a href="grid.html"> <span>Headsets</span> </a> </li>
-                        <li class="level2 nav-7-2-9"> <a href="grid.html"> <span>Batteries</span> </a> </li>
-                        <li class="level2 nav-7-2-10"> <a href="grid.html"> <span>Screen Protectors</span> </a> </li>
-                        <li class="level2 nav-7-2-11"> <a href="grid.html"> <span>Memory Cards</span> </a> </li>
-                        <li class="level2 nav-7-2-14 last"> <a href="grid.html"> <span>Cases</span> </a> </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div> -->
-          </li>
-          <li class="level0 nav-6 level-top parent"> <a href="{{route('pg')}}" class="level-top"> <span>PG</span> </a>
-            <!-- <div style="display: none; left: 0px;" class="level0-wrapper dropdown-6col">
-              <div class="level0-wrapper2">
-                <div class="nav-block nav-block-center grid13-8 itemgrid itemgrid-4col">
-                  <ul class="level0">
-                    <li class="level1 nav-6-3 parent item"> <a href="grid.html"> <span>Shoes </span> </a>
-                      <ul class="level1">
-                        <li class="level2 nav-6-3-9 first"> <a href="grid.html"> <span>Flat Shoes</span> </a> </li>
-                        <li class="level2 nav-6-3-10"> <a href="grid.html"> <span>Flat Sandals</span> </a> </li>
-                        <li class="level2 nav-6-3-11"> <a href="grid.html"> <span>Boots</span> </a> </li>
-                        <li class="level2 nav-6-3-11"> <a href="grid.html"> <span>Boots</span> </a> </li>
-                        <li class="level2 nav-6-3-12 last"> <a href="grid.html"> <span>Heels</span> </a> </li>
-                      </ul>
-                    </li>
-                    <li class="level1 nav-6-4 parent item"> <a href="grid.html"> <span>Jewelry</span> </a>
-                      <ul class="level1">
-                        <li class="level2 nav-6-4-13 first"> <a href="grid.html"> <span>Bracelets</span> </a> </li>
-                        <li class="level2 nav-6-4-14"> <a href="grid.html"> <span>Necklaces &amp; Pendants</span> </a> </li>
-                        <li class="level2 nav-6-4-14"> <a href="grid.html"> <span>Necklaces</span> </a> </li>
-                        <li class="level2 nav-6-4-14"> <a href="grid.html"> <span>Pendants</span> </a> </li>
-                        <li class="level2 nav-6-4-15 last"> <a href="grid.html"> <span>Pins &amp; Brooches</span> </a> </li>
-                      </ul>
-                    </li>
-                    <li class="level1 nav-6-5 parent item"> <a href="grid.html"> <span>Dresses</span> </a>
-                      <ul class="level1">
-                        <li class="level2 nav-6-5-16 first"> <a href="grid.html"> <span>Casual Dresses</span> </a> </li>
-                        <li class="level2 nav-6-5-17"> <a href="grid.html"> <span>Evening</span> </a> </li>
-                        <li class="level2 nav-6-5-18"> <a href="grid.html"> <span>Designer</span> </a> </li>
-                        <li class="level2 nav-6-5-18"> <a href="grid.html"> <span>Designer</span> </a> </li>
-                        <li class="level2 nav-6-5-19 last"> <a href="grid.html"> <span>Party</span> </a> </li>
-                      </ul>
-                    </li>
-                    <li class="level1 nav-6-6 last parent item"> <a href="grid.html"> <span>Jackets</span> </a>
-                      <ul class="level1">
-                        <li class="level2 nav-6-7-24 first"> <a href="grid.html"> <span>Coats</span> </a> </li>
-                        <li class="level2 nav-6-7-25"> <a href="grid.html"> <span>Jackets</span> </a> </li>
-                        <li class="level2 nav-6-7-26"> <a href="grid.html"> <span>Leather Jackets</span> </a> </li>
-                        <li class="level2 nav-6-7-26"> <a href="grid.html"> <span>Leather Jackets</span> </a> </li>
-                        <li class="level2 nav-6-7-27 last"> <a href="grid.html"> <span>Blazers</span> </a> </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-                <div class="nav-block nav-block-right std grid12-3"> <a class="product-image" title="Stablished fact reader" href="#"> <img alt="Stablished fact reader" src="products-images/product2.jpg" width="150"></a>
-                  <div class="item-title"> <a href="#" title="Sample Product"> Sample Product </a> </div>
-                  <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
-                </div>
-              </div>
-            </div> -->
-          </li>
-          <li class="level0 nav-7 level-top parent"> <a class="level-top" href="{{route('recruitment')}}"> <span>Đăng bài</span> </a>
-            
-          </li>
-          <li class="level0 nav-8 level-top"> <a href="grid.html" class="level-top"> <span>Công ty</span> </a> </li>
-          <li class="level0 nav-8 level-top"> <a href="grid.html" class="level-top"> <span>Thành Phố</span> </a> </li>
+                    </div>
+                    <div class="nav-block nav-block-right std grid12-3"> <a class="product-image" title="Stablished fact reader" href="#"> <img alt="Stablished fact reader" src="products-images/product2.jpg" width="150"></a>
+                      <div class="item-title"> <a href="#" title="Sample Product"> Sample Product </a> </div>
+                      <div class="price-box"> <span class="regular-price"> <span class="price">$125.00</span> </span> </div>
+                    </div>
+                  </div>
+                </div> -->
+              </li>
+            @endif
+          @endguest
+          
           <!-- <li class="nav-custom-link level0 level-top parent"> <a class="level-top" href="#"><span>Custom</span></a>
             <div style="display: none; left: 0px;" class="level0-wrapper">
               <div class="header-nav-dropdown-wrapper clearer">

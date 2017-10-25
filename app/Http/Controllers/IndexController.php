@@ -7,7 +7,7 @@ use App\Job;
 use App\PbPg;
 class IndexController extends Controller
 {
-    //
+    
     public function showAll(){
         $jobs = Job::all();
         $pbs = PbPg::where('gender', 1)->get();

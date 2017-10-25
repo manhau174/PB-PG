@@ -17,10 +17,17 @@ class LoginController extends Controller
         
     	$email = $request->email;
     	$password = $request->password;
-        // dd($password);
+        
     	if (Auth::attempt(['email' => $email, 'password' => $password])) 
     	{
-    		return redirect()->route('home');
+            if (Auth::user()->permission == 3) {
+                
+                return redirect()->route('updatePbPg.index');
+            }
+            else{
+                return redirect()->route('home');
+            }
+    		
 
     	}
     	else

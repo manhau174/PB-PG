@@ -16,7 +16,7 @@
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
-
+                                
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -24,7 +24,24 @@
                                 @endif
                             </div>
                         </div>
-                        <input id="permission" type="hidden" class="form-control" name="permission" value="3">
+
+                        <div class="form-group{{ $errors->has('permission') ? ' has-error' : '' }}">
+                            <label for="permission" class="col-md-4 control-label">permission</label>
+
+                            <div class="col-md-6" >
+                                {{-- <input id="permission" type="text" class="form-control" name="permission" value="{{ old('permission') }}"> --}}
+                                <select name="permission">
+                                  <option value="3">PB-PG</option>
+                                  <option value="2">RECRUITMENT</option>
+                                </select>
+                                @if ($errors->has('permission'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('permission') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
