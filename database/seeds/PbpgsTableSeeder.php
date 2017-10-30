@@ -22,7 +22,7 @@ class PbpgsTableSeeder extends Seeder
 		        'mobile' => $faker->tollFreePhoneNumber(),
 		        'description' => $faker->text(),
 		        'profile_picture' => $faker->imageUrl($width = 640, $height = 480),
-		        'images' => $faker->imageUrl($width, $height, 'cats', true, 'Faker'),
+		        // 'images' => $faker->imageUrl($width, $height, 'cats', true, 'Faker'),
 		        'height' => $faker->randomFloat($nbMaxDecimals = NULL, $min = 160, $max = 200),
 		        'weight' => $faker->randomFloat($nbMaxDecimals = NULL, $min = 50, $max = 70),
 		        'user_id' => $faker->biasedNumberBetween($min = 1 , $max = 10),

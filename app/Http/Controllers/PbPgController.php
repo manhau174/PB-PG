@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PbPg;
-
+use App\albumPbPg;
+use App\User;
+use Auth;
+// use App\Post;
 class PbPgController extends Controller
 {
     /**
@@ -14,7 +17,13 @@ class PbPgController extends Controller
      */
     public function index()
     {
-        return view('recruitmentPbPg');
+        $id = User::find(Auth::user()->id)->pbpg->id;
+
+        $recruitment = PbPg::find($id);
+
+        // dd($recruitment->posts);
+
+        return view('recruitmentPbPg',['recruitment' => $recruitment]);
     }
 
     /**
@@ -35,25 +44,29 @@ class PbPgController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $pbpg = PbPg::create([
+            'full_name' => $request->full_name,
+            'address' => $request->address,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'description' => $request->description,
+            'gender' => $request->gender,
+            'city_id' => $request->city_id,
+            'profile_picture' => $request->profile_picture,
+            'height' => $request->height,
+            'weight' => $request->weight,
+            'user_id' => $request->user_id,
+        ]);
 
-        if ($request->hasFile('images')) {
-            $count = count($images);
-            for ($i=0; $i < $count ; $i++) {   
-                $image = $request->images;
-
-                $image_name = $image->getOriginalName();
-
-                $image->move('images/PbPg',$image_name);
-            }
-            
+        foreach ($request->images as $image) {
+            $filename = $image->store('images');
+            albumPbPg::create([
+                'pbpg_id' => $pbpg->id,
+                'images' => $filename
+            ]);
         }
 
-        $data->images = 'images/PbPg/' .$image_name;
-
-        PbPg::create($data);
-
-        return redirect()->route('updatePbPg');
+        return redirect()->route('updatePbPg.index');
     }
 
     /**
@@ -75,7 +88,10 @@ class PbPgController extends Controller
      */
     public function edit($id)
     {
-        //
+        // dd($id);
+        $pbpg = PbPg::find($id);
+        // dd($id);
+        return view('editPbPg',['pbpg' => $pbpg]);
     }
 
     /**
@@ -87,7 +103,30 @@ class PbPgController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pbpg = PbPg::find($id);
+        $pbpg->update([
+            'full_name' => $request->full_name,
+            'address' => $request->address,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'description' => $request->description,
+            'gender' => $request->gender,
+            'city_id' => $request->city_id,
+            'profile_picture' => $request->profile_picture,
+            'height' => $request->height,
+            'weight' => $request->weight,
+            'user_id' => $request->user_id,
+        ]);
+
+        foreach ($request->images as $image) {
+            $filename = $image->store('images/PbPg');
+            albumPbPg::create([
+                'pbpg_id' => $pbpg->id,
+                'images' => $filename
+            ]);
+        }
+
+        return redirect()->route('updatePbPg.index');
     }
 
     /**

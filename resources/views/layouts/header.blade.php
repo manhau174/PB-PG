@@ -29,7 +29,20 @@
 <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}" type="text/css">
+<style type="text/css">
+  .detail-recruitment{
+    border: 1px solid black;
+    background-color: #f9f9f9;
+    margin-bottom: 1%;
+  }
+  .city_and_posted_date{
+    padding-top: 15%;
+  }
+  .detail-recruitment:hover{
+    box-shadow: 5px 3px 10px rgba(0, 0, 0, .5);
+  }
 
+</style>
 <!-- Google Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
 </head>
@@ -87,9 +100,6 @@
                 </div>
                 <!-- End Header Company -->
 
-                  
-
-
                 <div class="dropdown block-company-wrapper hidden-xs">
                   @guest
                     <a href="{{ route('login') }}">Login</a>
@@ -98,14 +108,20 @@
                               {{ Auth::user()->name }} <span class="caret"></span>
                           </a>
                     <ul class="dropdown-menu" role="menu">
-                     {{--  @if (Auth::user()->permission == 3)
+                      @if (Auth::user()->permission == 3)
                           <li>
                               <a href="{{ route('updatePbPg.create') }}">
+                                  create thong tin
+                              </a>
+
+                          </li>
+                          <li>
+                              <a href="{{ route('updatePbPg.edit',App\User::find(Auth::user()->id)->pbpg->id) }}">
                                   Update thong tin
                               </a>
 
                           </li>
-                      @endif --}}
+                      @endif
                       <li role="presentation">
                         <a href="{{ route('logout') }}">
                             Logout
@@ -119,31 +135,6 @@
                   @endguest
                 </div>
                   
-                
-                {{-- <ul class="nav navbar-nav ">
-                @guest
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ route('logout') }}">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-
-                        </ul>
-                    </li>
-                @endguest
-                </ul> --}}
                                    
 
               </div>
@@ -460,7 +451,7 @@
                   <li class="level1 first"><a href="grid.html"><span>Grid</span></a></li>
                   <li class="level1 nav-10-2"> <a href="list.html"> <span>List</span> </a> </li>
                   <li class="level1 nav-10-3"> <a href="product_detail.html"> <span>Product Detail</span> </a> </li>
-                  <li class="level1 nav-10-4"> <a href="shopping_cart.html"> <span>Shopping Cart</span> </a> </li>
+                  <li class="lepvel1 nav-10-4"> <a href="shopping_cart.html"> <span>Shopping Cart</span> </a> </li>
                   <li class="level1 first parent"><a href="checkout.html"><span>Checkout</span></a>
                     <ul class="level2">
                       <li class="level2 nav-2-1-1 first"><a href="checkout_method.html"><span>Checkout Method</span></a></li>

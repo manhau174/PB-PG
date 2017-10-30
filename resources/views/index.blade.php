@@ -2,7 +2,7 @@
 @extends('layouts.header')
 
 @section('content')
-  
+  {{-- {{dd(App\User::all())}} --}}
   <!-- Slider -->
   <section class="slider-intro">
     <div class="container">

@@ -22,12 +22,10 @@ class CreatePbPgsTable extends Migration
             $table->string('mobile',20);
             $table->text('description');
             $table->string('profile_picture');
-            $table->text('images')->nullable();
+            // $table->text('images')->nullable();
             $table->integer('height');
             $table->integer('weight');
             $table->integer('city_id');
-
-
             $table->integer('user_id');
             $table->timestamps();
         });
