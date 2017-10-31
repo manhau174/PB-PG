@@ -49,7 +49,7 @@
 		  <script src="assets/js/excanvas.min.js"></script>
 		<![endif]-->
 		
-	
+
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 			jQuery(function($) {

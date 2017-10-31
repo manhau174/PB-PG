@@ -1,21 +1,24 @@
 <?php
 
 namespace App;
-
+use DB;
 use Illuminate\Database\Eloquent\Model;
-
+use Cviebrock\EloquentSluggable\Sluggable;
 class Post extends Model
 {
-    protected $fillable = [
-        'title', 'address', 'content','starting_day','ending_day','salary' ,'slug','city_id','recruitment_id','location','status',
-    ];
+    //
+    use Sluggable;
+    protected $fillable = ['title','content','address','starting_day','ending_day','salary','slug','city_id', 'recruitment_id','location','status'];
 
-    public function recruitment()
+    public function sluggable()
     {
-        return $this->belongsTo('App\Recruitment');
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
-     public function city()
-    {
-        return $this->belongsTo('App\City');
+    public static function findPostBySlug($slug) {
+        return DB::table('posts')->where('slug', $slug)->first();
     }
 }

@@ -16,7 +16,7 @@ class CreatePbPgsTable extends Migration
         Schema::create('pb_pgs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('full_name', 50);
-            $table->dateTime('birthday')->nullable();
+            $table->date('birthday')->nullable();
             $table->string('address',100)->nullable();
             $table->string('email',50)->unique();
             $table->string('mobile',20);

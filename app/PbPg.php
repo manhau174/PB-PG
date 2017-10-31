@@ -16,5 +16,7 @@ class PbPg extends Model
     public function city()
     {
         return $this->belongsTo('App\City');
+    {
+    public function detail(){
     }
 }

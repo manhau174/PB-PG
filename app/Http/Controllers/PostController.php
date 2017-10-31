@@ -104,4 +104,28 @@ class PostController extends Controller
             'error' => 0,
         ]);
     }
+
+    public function create_post(){
+    	$cities = City::all();
+    	
+    	return view('post.create', ['cities' => $cities]);
+    }
+    public function store_post(Request $request) {
+        $data = $request->all();
+        Post::create($data);
+        return redirect()->route('home');
+    }
+    public function detail($slug) {
+        $post = Post::findPostBySlug($slug);
+        // $post = Post::where('slug', $slug)->first();
+        return view('post.detail', ['post' => $post ]);
+    }
+  //   public function test(){
+  //   	$post = new Post([
+	 //    'title' => 'đây là tiêu đề',
+		// ]);
+
+		// $post->save();
+		// return $post->slug;
+	 //    }
 }

@@ -14,22 +14,25 @@
 <title>PB & PG</title>
 
 <!-- Favicons Icon -->
-<link rel="icon" href="http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="{{ asset('http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico') }}" type="image/x-icon" />
+<link rel="shortcut icon" href="{{ asset('http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico') }}" type="image/x-icon" />
 
 <!-- Mobile Specific -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <!-- CSS Style -->
 <!--<link rel="stylesheet" href="css/animate.css" type="text/css">-->
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="css/slider.css" type="text/css">
-<link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
-<link rel="stylesheet" href="css/owl.theme.css" type="text/css">
-<link rel="stylesheet" href="css/font-awesome.css" type="text/css">
-<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/slider.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/owl.theme.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
 
 <!-- Google Fonts -->
+
+<link href='{{ asset('http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico') }}' rel='stylesheet' type='text/css'>
+
 <link href='https://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
 
 </head>
@@ -92,7 +95,7 @@
                   
 
 
-                <div class="dropdown block-company-wrapper hidden-xs">
+                <div class="dropdown hidden-xs login">
                   @guest
                     <a href="{{ route('login') }}">Login</a>
                   @else
@@ -100,6 +103,13 @@
                               {{ Auth::user()->name }} <span class="caret"></span>
                           </a>
                     <ul class="dropdown-menu" role="menu">
+                      @if (Auth::user()->permission == 2)
+                        <li><a href="{{ route('post.create') }}">Đăng bài</a></li>
+                      @elseif (Auth::user()->permission == 3)
+                        <li><a href="{{ route('pbpg.create') }}">Đăng bài</a></li>
+                      @endif
+                      
+                      
                       <li role="presentation">
                         <a href="{{ route('logout') }}">
                             Logout
@@ -585,11 +595,11 @@
               </div>
             </div> -->
           </li>
-          <li class="level0 nav-7 level-top parent"> <a class="level-top" href="{{route('recruitment')}}"> <span>Đăng bài</span> </a>
+          {{-- <li class="level0 nav-7 level-top parent"> <a class="level-top" href="{{route('recruitment')}}"> <span>Đăng bài</span> </a>
             
           </li>
           <li class="level0 nav-8 level-top"> <a href="grid.html" class="level-top"> <span>Công ty</span> </a> </li>
-          <li class="level0 nav-8 level-top"> <a href="grid.html" class="level-top"> <span>Thành Phố</span> </a> </li>
+          <li class="level0 nav-8 level-top"> <a href="grid.html" class="level-top"> <span>Thành Phố</span> </a> </li> --}}
           <!-- <li class="nav-custom-link level0 level-top parent"> <a class="level-top" href="#"><span>Custom</span></a>
             <div style="display: none; left: 0px;" class="level0-wrapper">
               <div class="header-nav-dropdown-wrapper clearer">
@@ -638,4 +648,4 @@
   <!-- end nav --> 
 
 @yield('content')
-  @yield('footer')
+@yield('footer')

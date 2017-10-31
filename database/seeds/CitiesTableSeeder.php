@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\City;
 class CitiesTableSeeder extends Seeder
 {
     /**
@@ -13,10 +13,49 @@ class CitiesTableSeeder extends Seeder
     {
         //
         $faker = Faker\Factory::create();
-        for ($i=0; $i < 10 ; $i++) { 
-        	DB::table('cities')->insert([
-        		'name' => $faker->name,
-        	]);
-        }
+        // for ($i=0; $i < 10 ; $i++) { 
+        // 	DB::table('cities')->insert([
+        // 		'name' => $faker->name,
+        // 	]);
+        // }
+        $city = new City();
+        $city->name = "Hà Nội";
+        $city->save();
+
+        $city = new City();
+        $city->name = "TP. Hồ Chí Minh";
+        $city->save();
+
+        $city = new City();
+        $city->name = "Bắc Ninh";
+        $city->save();
+
+        $city = new City();
+        $city->name = "Nha Trang";
+        $city->save();
+
+        $city = new City();
+        $city->name = "Khánh Hoà";
+        $city->save();
+
+        $city = new City();
+        $city->name = "Hải Phòng";
+        $city->save();
+
+        $city = new City();
+        $city->name = "Thanh Hoá";
+        $city->save();
+
+        $city = new City();
+        $city->name = "Đà Nẵng";
+        $city->save();
+
+        $city = new City();
+        $city->name = "Huế";
+        $city->save();
+
+        $city = new City();
+        $city->name = "Vũng Tàu";
+        $city->save();
     }
 }

@@ -11,15 +11,25 @@
 |
 */
 
-Route::get('/','IndexController@showAll')->name('home');
+
+
+
+Route::get('/', 'IndexController@showAll')->name('home');
+
 
 Route::get('/profile', function () {
     return view('profile');
 });
 
-Route::get('/recruitment', function () {
-    return view('recruitment');
-})->name('recruitment');
+Route::get('/post/create', 'PostController@create_post')->name('post.create');
+
+Route::post('/post/store', 'PostController@store_post')->name('post.store');
+
+Route::get('/post/{slug}', 'PostController@detail')->name('post.detail');
+
+Route::get('/pbpg/create', 'PbpgController@create_pbpg')->name('pbpg.create');
+
+Route::post('/pbpg/store', 'PbpgController@store')->name('pbpg.store');
 
 Route::get('/pb', function () {
     return view('pb');

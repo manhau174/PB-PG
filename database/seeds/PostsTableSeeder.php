@@ -53,6 +53,7 @@ class PostsTableSeeder extends Seeder
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->salary = 400000;
+            $post->status = 1;
             $post->city_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->recruitment_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->save();
@@ -117,6 +118,7 @@ class PostsTableSeeder extends Seeder
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->salary = 4500000;
+            $post->status = 0;
             $post->city_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->recruitment_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->save();
@@ -175,6 +177,7 @@ class PostsTableSeeder extends Seeder
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->salary = 350000;
+            $post->status = 1;
             $post->city_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->recruitment_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->save();
@@ -201,6 +204,7 @@ class PostsTableSeeder extends Seeder
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->salary = 300000;
+            $post->status = 1;
             $post->city_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->recruitment_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->save();
@@ -238,6 +242,7 @@ class PostsTableSeeder extends Seeder
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->salary = 400000;
+            $post->status = 0;
             $post->city_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->recruitment_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->save();
@@ -264,6 +269,7 @@ class PostsTableSeeder extends Seeder
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->salary = 400000;
+            $post->status = 1;
             $post->city_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->recruitment_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->save();
@@ -290,6 +296,7 @@ class PostsTableSeeder extends Seeder
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->salary = 300000;
+            $post->status = 1;
             $post->city_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->recruitment_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->save();
@@ -316,6 +323,7 @@ class PostsTableSeeder extends Seeder
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->salary = 350000;
+            $post->status = 0;
             $post->city_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->recruitment_id = $faker->biasedNumberBetween($min = 1, $max = 10);
             $post->save();

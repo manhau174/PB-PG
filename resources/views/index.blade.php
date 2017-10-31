@@ -96,7 +96,7 @@
                     <div class="col-item">
                       <div class="item-inner">
                         <div class="item-img">
-                          <div class="item-img-info"> <a href="product_detail.html"  title="Sample Product" class="product-image"> <img src="{{$pb->profile_picture}}" alt="Sample Product"></a>
+                          <div class="item-img-info"> <a href="product_detail.html"  title="Sample Product" class="product-image"> <img src="{{ asset($pb->images) }}" alt="Sample Product"></a>
                             <div class="item-box-hover">
                               <div class="box-inner">
                                 <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"> <span> Quick View</span></a></div>
@@ -153,7 +153,7 @@
                     <div class="col-item">
                       <div class="item-inner">
                         <div class="item-img">
-                          <div class="item-img-info"> <a href="product_detail.html"  title="Sample Product" class="product-image"> <img src="{{$pg->profile_picture}}" alt="Sample Product"> </a>
+                          <div class="item-img-info"> <a href="product_detail.html"  title="Sample Product" class="product-image"> <img src="{{ asset($pg->images) }}" alt="Sample Product"> </a>
                             <div class="item-box-hover">
                               <div class="box-inner">
                                 <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"> <span> Quick View</span></a></div>
@@ -201,7 +201,7 @@
               </div>
               <div id="featured-slider" class="product-flexslider hidden-buttons">
                 <div class="slider-items slider-width-col4"> 
-                  @foreach ($jobs as $job)
+                  @foreach ($posts as $post)
                     <!-- Item -->
                   <div class="item">
                     <div class="col-item">
@@ -217,17 +217,17 @@
                         </div> --}}
                         <div class="item-info">
                           <div class="info-inner">
-                            <div class="item-title"> <a href="product_detail.html" title=""> {{$job->title}} </a>  </div>
+                            <div class="item-title"> <a href="product_detail.html" title=""> {{$post->title}} </a>  </div>
                             <div class="item-content">
-                              <div class=""><i class="icon-calendar"></i><b>Thời gian:</b> {{$job->time}}</div>
-                                <p><b>Mô tả công việc:</b> {{$job->description}} </p>
+                              <div class=""><i class="icon-calendar"></i><b>Thời gian:</b> {{$post->starting_day}} - {{$post->ending_day}}</div>
+                                {{-- <p><b>Mô tả công việc:</b> {!!str_limit($post->content, 100)!!} </p> --}}
                                 <div class="item-price">
-                                  <div class="price-box"> <span class="regular-price" id="product-price-1"> <span class="price">{{number_format($job->salary)}} VNĐ</span> </span> </div>
+                                  <div class="price-box"> <span class="regular-price" id="product-price-1"> <span class="price">{{number_format($post->salary)}} VNĐ</span> </span> </div>
                                 </div>
                             </div>
                           </div>
                           <div class="actions"><span class="add-to-links"> <!-- <a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> -->
-                            <button  title="Add to Cart" class="button btn-cart"><span>Đọc thêm</span></button>
+                            <button  title="Read more" class="button btn-cart"><span><a href="{{ route('post.detail', ['slug' => $post->slug ] ) }}">Đọc thêm</a></span></button>
                             <!-- <a href="compare.html" class="link-compare" title="Add to Compare"><span>Add to Compare</span></a> --></span> </div>
                         </div>
                       </div>

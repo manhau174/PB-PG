@@ -234,12 +234,15 @@
 </div>
 
 <!-- JavaScript --> 
-<script type="text/javascript" src="js/jquery.min.js"></script> 
-<script type="text/javascript" src="js/bootstrap.min.js"></script> 
-<script type="text/javascript" src="js/parallax.js"></script> 
-<script type="text/javascript" src="js/common.js"></script> 
-<script type="text/javascript" src="js/slider.js"></script> 
-<script type="text/javascript" src="js/owl.carousel.min.js"></script> 
+
+<script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script> 
+<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script> 
+<script type="text/javascript" src="{{ asset('js/parallax.js') }}"></script> 
+<script type="text/javascript" src="{{ asset('js/common.js') }}"></script> 
+<script type="text/javascript" src="{{ asset('js/slider.js') }}"></script> 
+<script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script> 
+
+
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 <script type="text/javascript">
     $.ajaxSetup({
@@ -249,6 +252,7 @@
     });
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+
 <script type="text/javascript">
     //<![CDATA[
 	jQuery(function() {
