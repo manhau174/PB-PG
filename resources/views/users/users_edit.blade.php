@@ -5,7 +5,7 @@
 		
 			<div class="form-group">
 				<label for="">Name</label>
-				<input type="text" class="form-control" id="name" name="name" placeholder="Input field" value="{{$user->name}}">
+				<input type="text" class="form-control" id="username" name="username" placeholder="Input field" value="{{$user->username}}">
 			</div>
 		
 			<div class="form-group">
@@ -23,17 +23,18 @@
 				<option value="2" <?php if($user->permission==2) echo 'selected';?>>Recuitment</option>
 				<option value="3" <?php if($user->permission==3) echo 'selected';?>>Pb/Pg</option>
 			</select>
-			<input type="hidedn" name="_method" value="PUT">
+			<input type="hidden" name="_method" value="PUT">
 			{{csrf_field()}}
 			<button type="submit" class="btn btn-primary">Update</button>
 		</form>
 		<script type="text/javascript">
+			
 			$('#form').submit(function(e){
 				e.preventDefault();
 				var form = $(this);
 				form.validate({
 					rules:{
-						name: {
+						username: {
 							required: true,
 							minlength:6,
 						},
@@ -48,13 +49,16 @@
 					$.ajax({
 						url : form.prop('action'),
 						data : data,
-						type: 'PUT',
 						dataType: 'json',
 						cache: false,
 						contentType:false,
-						process:false,
+						processData:false,
+						type: 'POST',
 						success:function(msg){
-							window.location.href="/users"
+							toastr.success('Thêm mới thành công! Đang tải lại ... ');
+							setTimeout(function() {
+								window.location.href="/users";
+							}, 1500);
 						},
 					});
 				}

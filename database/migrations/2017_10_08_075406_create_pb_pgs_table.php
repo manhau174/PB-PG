@@ -19,12 +19,13 @@ class CreatePbPgsTable extends Migration
             $table->dateTime('birthday')->nullable();
             $table->string('address',100)->nullable();
             $table->string('email',50)->unique();
-            $table->string('mobile',13);
+            $table->string('mobile',20);
             $table->text('description');
             $table->string('profile_picture');
             $table->text('images')->nullable();
             $table->integer('height');
             $table->integer('weight');
+            $table->integer('city_id');
 
 
             $table->integer('user_id');

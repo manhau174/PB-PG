@@ -33,10 +33,10 @@ Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
 
-Route::get('user', 'UserController@index');
+// Route::get('user', 'UserController@index');
 
 Route::get('/dashbord',function(){
-	return view('dashbord');
+	return view('dashbord', ['content' => 'Dashbord']);
 })->name('admin');
 
 
@@ -58,7 +58,7 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::get('quan-ly-nguoi-dung',function(){
 		return view('admin.userAdmin');
 	})->name('admin.user');
-	Route::get('user', 'UserController@index');
+	// Route::get('user', 'UserController@index');
 
 	Route::get('logout','LoginController@getlogout')->name('admin.logout');
 });
@@ -81,9 +81,15 @@ Route::post('register', 'client\RegisterClientController@store')->name('register
 /*route logout*/
 
 Route::get('logout','client\LoginController@getlogout')->name('logout');
-
+Route::get('/users/getView/{str}','UserController@getView');
+Route::get('/users/checkEmail/{email}','UserController@checkEmail');
+Route::get('/pbpgs/checkEmail/{email}','PbPgController@checkEmail');
+Route::get('/recruitments/checkEmail/{email}','RecruitmentController@checkEmail');
 /*end route logout*/
 
 
 Route::resource('users','UserController');
+Route::resource('recruitments','RecruitmentController');
+Route::resource('pbpgs','PbPgController');
+Route::resource('posts','PostController');
 

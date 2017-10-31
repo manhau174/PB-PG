@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHiresTable extends Migration
+class AddLocationToPbpgsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateHiresTable extends Migration
      */
     public function up()
     {
-        Schema::create('hires', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('pb_pg_id');
-            $table->integer('job_id');
-            $table->timestamps();
+        Schema::table('pbpgs', function (Blueprint $table) {
+            $table->integer('location')->nullable()->default(1);
         });
     }
 
@@ -28,6 +25,8 @@ class CreateHiresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hires');
+        Schema::table('pbpgs', function (Blueprint $table) {
+            $table->dropColumn('location');
+        });
     }
 }

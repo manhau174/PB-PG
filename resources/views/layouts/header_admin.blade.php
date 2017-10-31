@@ -9,9 +9,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
-		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" />
+<!-- 		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" /> -->
 		<link rel="stylesheet" href="{{asset('assets/font-awesome/4.5.0/css/font-awesome.min.css')}}" />
-
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<!-- page specific plugin styles -->
 
 		<!-- text fonts -->
@@ -25,7 +25,7 @@
 		<![endif]-->
 		<link rel="stylesheet" href="{{asset('assets/css/ace-skins.min.css')}}" />
 		<link rel="stylesheet" href="{{asset('assets/css/ace-rtl.min.css')}}" />
-
+		
 		<!--[if lte IE 9]>
 		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
 		<![endif]-->
@@ -43,13 +43,17 @@
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
 		<!-- Latest compiled and minified CSS & JS -->
+		<!-- Latest compiled and minified CSS & JS -->
+		<link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<script src="https://code.jquery.com/jquery.js"></script>
-<!-- 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-		<script src="{{asset('assets/js/jquery-2.1.4.min.js')}}"></script> -->
+		<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<!-- <script src="{{asset('assets/js/jquery-2.1.4.min.js')}}"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
+		
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='{{asset('assets/js/jquery.mobile.custom.min.js')}}'>"+"<"+"/script>");
 		</script>
-		<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+<!-- 		<script src="{{asset('assets/js/bootstrap.min.js')}}"></script> -->
 		<script src="{{asset('assets/js/jquery-ui.custom.min.js')}}"></script>
 		<script src="{{asset('assets/js/jquery.ui.touch-punch.min.js')}}"></script>
 		<script src="{{asset('assets/js/jquery.easypiechart.min.js')}}"></script>
@@ -58,9 +62,13 @@
 		<script src="{{asset('assets/js/jquery.flot.pie.min.js')}}"></script>
 		<script src="{{asset('assets/js/jquery.flot.resize.min.js')}}"></script>
 		<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js" type="text/javascript"></script>
+		<script src="{{asset('js/toastr.min.js')}}"></script>
 		<!-- ace scripts -->
 		<script src="{{asset('assets/js/ace-elements.min.js')}}"></script>
 		<script src="{{asset('assets/js/ace.min.js')}}"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+		<link rel="stylesheet" href="{{asset('css/toastr.min.css')}}" />
 		<script type="text/javascript">
 			$.ajaxSetup({
 			    headers: {
@@ -72,7 +80,7 @@
 	</head>
 
 	<body class="no-skin">
-		<div id="navbar" class="navbar navbar-default          ace-save-state">
+		<div id="navbar" class="navbar navbar-default ace-save-state">
 			<div class="navbar-container ace-save-state" id="navbar-container">
 				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
 					<span class="sr-only">Toggle sidebar</span>
@@ -433,7 +441,7 @@
 
 				<ul class="nav nav-list">
 					<li class="active">
-						<a href="index.html">
+						<a href="{{route('admin')}}">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>
 						</a>
@@ -443,9 +451,9 @@
 
 					<li class="" data-target="#sub1">
 						<a href="#" class="dropdown-toggle" >
-							<i class="menu-icon fa fa-desktop"></i>
+							<i class="menu-icon fa fa-user"></i>
 							<span class="menu-text">
-								UI &amp; Elements
+								Users
 							</span>
 
 							<b class="arrow fa fa-angle-down"></b>
@@ -455,214 +463,49 @@
 
 						<ul class="submenu" id="sub1">
 							<li class="">
-								<a href="#" class="dropdown-toggle">
+								<a href="{{route('users.index')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 
-									Layouts
-									<b class="arrow fa fa-angle-down"></b>
+									User List
 								</a>
 
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.html">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Top Menu
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-									<li class="">
-										<a href="two-menu-1.html">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Two Menus 1
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-									<li class="">
-										<a href="two-menu-2.html">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Two Menus 2
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-									<li class="">
-										<a href="mobile-menu-1.html">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Default Mobile Menu
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-									<li class="">
-										<a href="mobile-menu-2.html">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Mobile Menu 2
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-									<li class="">
-										<a href="mobile-menu-3.html">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Mobile Menu 3
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-								</ul>
 							</li>
 
 							<li class="">
-								<a href="typography.html">
+								<a href="{{route('users.create')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Typography
+									Add new user
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
-							<li class="">
-								<a href="elements.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Elements
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="buttons.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Buttons &amp; Icons
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="content-slider.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Content Sliders
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="treeview.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Treeview
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="jquery-ui.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									jQuery UI
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="nestable-list.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Nestable Lists
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>
-
-									Three Level Menu
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="#">
-											<i class="menu-icon fa fa-leaf green"></i>
-											Item #1
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-									<li class="">
-										<a href="#" class="dropdown-toggle">
-											<i class="menu-icon fa fa-pencil orange"></i>
-
-											4th level
-											<b class="arrow fa fa-angle-down"></b>
-										</a>
-
-										<b class="arrow"></b>
-
-										<ul class="submenu">
-											<li class="">
-												<a href="#">
-													<i class="menu-icon fa fa-plus purple"></i>
-													Add Product
-												</a>
-
-												<b class="arrow"></b>
-											</li>
-
-											<li class="">
-												<a href="#">
-													<i class="menu-icon fa fa-eye pink"></i>
-													View Products
-												</a>
-
-												<b class="arrow"></b>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
 						</ul>
 					</li>
 
-					<li class="">
+					<li class="" data-target="#sub2">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> Tables </span>
+							<span class="menu-text"> Recruitments </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
 						<b class="arrow"></b>
 
-						<ul class="submenu">
+						<ul class="submenu" id="sub2">
 							<li class="">
-								<a href="tables.html">
+								<a href="{{route('recruitments.index')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Simple &amp; Dynamic
+									Recruitment List
 								</a>
 
 								<b class="arrow"></b>
 							</li>
-
 							<li class="">
-								<a href="jqgrid.html">
+								<a href="{{route('recruitments.create')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
-									jqGrid plugin
+									Add new Recruitment
 								</a>
 
 								<b class="arrow"></b>
@@ -670,71 +513,68 @@
 						</ul>
 					</li>
 
-					<li class="">
+					<li class="" data-target="#sub3">
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-pencil-square-o"></i>
-							<span class="menu-text"> Forms </span>
+							<i class="menu-icon fa fa-male"></i>
+							<span class="menu-text"> PB/PG </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
 						<b class="arrow"></b>
 
-						<ul class="submenu">
+						<ul class="submenu" id="sub3">
 							<li class="">
-								<a href="form-elements.html">
+								<a href="{{route('pbpgs.index')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Form Elements
+									PB/PG List
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
 							<li class="">
-								<a href="form-elements-2.html">
+								<a href="{{route('pbpgs.create')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Form Elements 2
+									Add new PB/PG
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
-							<li class="">
-								<a href="form-wizard.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Wizard &amp; Validation
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="wysiwyg.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Wysiwyg &amp; Markdown
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="dropzone.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Dropzone File Upload
-								</a>
-
-								<b class="arrow"></b>
-							</li>
 						</ul>
 					</li>
 
-					<li class="">
-						<a href="widgets.html">
-							<i class="menu-icon fa fa-list-alt"></i>
-							<span class="menu-text"> Widgets </span>
+					<li class="" data-target="#sub4">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-book"></i>
+							<span class="menu-text"> Posts </span>
+
+							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
 						<b class="arrow"></b>
+
+						<ul class="submenu" id="sub4">
+							<li class="">
+								<a href="{{route('posts.index')}}">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Post List
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="">
+								<a href="{{route('posts.create')}}">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Add new Post
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+						</ul>
 					</li>
 
 					<li class="">
@@ -924,7 +764,7 @@
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="#">Home</a>
 							</li>
-							<li class="active">Dashboard</li>
+							<li class="active">{{$content}}</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">

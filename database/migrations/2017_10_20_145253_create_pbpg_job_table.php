@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompaniesTable extends Migration
+class CreatePbpgJobTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('pbpg_job', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50);
-            $table->string('address', 100)->nullable();
-            $table->text('about')->nullable();
-            $table->integer('user_id');
-            $table->string('mobile',20)->nullable();
-            $table->string('email', 50)->unique();
-
+            $table->integer('pb_pg_id');
+            $table->integer('job_id');
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ class CreateCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('pbpg_job');
     }
 }

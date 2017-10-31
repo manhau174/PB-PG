@@ -1,8 +1,9 @@
 @extends('layouts.header_admin')
 @section('content')
 		<ul>
-			<li>Name : {{$user->name}}</li>
-			<li>Email : {{$user->email}}</li>
+			<li><b>Username</b> : {{$user->username}}</li>
+			<li><b>Email</b> : {{$user->email}}</li>
+			<li><b>Type</b> : {{$permission}}</li>
 		</ul>
 
 @endsection
