@@ -27,8 +27,8 @@ class StorePostRequest extends FormRequest
             'title' => 'required|max:255',
             'content' => 'required',
             'address' => 'required',
-            'start' => 'required',
-            'end' => 'required',
+            'starting_day' => 'required',
+            'ending_day' => 'required',
             'salary' => 'required'
         ];
     }

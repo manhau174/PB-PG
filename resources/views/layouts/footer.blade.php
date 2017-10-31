@@ -6,35 +6,35 @@
             <div class="slider-items slider-width-col6"> 
               
               <!-- Item -->
-              <div class="item"> <a href="#x"><img src="images/b-logo1.png" alt="Image"></a> </div>
+              <div class="item"> <a href="#x"><img src={{ asset('images/b-logo1.png') }} alt="Image"></a> </div>
               <!-- End Item --> 
               
               <!-- Item -->
-              <div class="item"> <a href="#x"><img src="images/b-logo2.png" alt="Image"></a> </div>
+              <div class="item"> <a href="#x"><img src={{ asset('images/b-logo1.png') }} alt="Image"></a> </div>
               <!-- End Item --> 
               
               <!-- Item -->
-              <div class="item"> <a href="#x"><img src="images/b-logo3.png" alt="Image"></a> </div>
+              <div class="item"> <a href="#x"><img src={{ asset('images/b-logo2.png') }} alt="Image"></a> </div>
               <!-- End Item --> 
               
               <!-- Item -->
-              <div class="item"> <a href="#x"><img src="images/b-logo4.png" alt="Image"></a> </div>
+              <div class="item"> <a href="#x"><img src={{ asset('images/b-logo3.png') }} alt="Image"></a> </div>
               <!-- End Item --> 
               
               <!-- Item -->
-              <div class="item"> <a href="#x"><img src="images/b-logo5.png" alt="Image"></a> </div>
+              <div class="item"> <a href="#x"><img src={{ asset('images/b-logo4.png') }} alt="Image"></a> </div>
               <!-- End Item --> 
               
               <!-- Item -->
-              <div class="item"> <a href="#x"><img src="images/b-logo6.png" alt="Image"></a> </div>
+              <div class="item"> <a href="#x"><img src={{ asset('images/b-logo5.png') }} alt="Image"></a> </div>
               <!-- End Item --> 
               
               <!-- Item -->
-              <div class="item"> <a href="#x"><img src="images/b-logo1.png" alt="Image"></a> </div>
+              <div class="item"> <a href="#x"><img src={{ asset('images/b-logo6.png') }} alt="Image"></a> </div>
               <!-- End Item --> 
               
               <!-- Item -->
-              <div class="item"> <a href="#x"><img src="images/b-logo4.png" alt="Image"></a> </div>
+              <div class="item"> <a href="#x"><img src={{ asset('images/b-logo7.png') }} alt="Image"></a> </div>
               <!-- End Item --> 
               
             </div>
@@ -48,7 +48,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <div class="footer-logo"><a href="index.html" title="Logo"><img src="images/logo.png" alt="logo"></a></div>
+            <div class="footer-logo"><a href="index.html" title="Logo"><img src={{ asset('images/logo.png') }} alt="logo"></a></div>
             <address>
             <i class="add-icon">&nbsp;</i>123 Main Street, Anytown, <br>
             &nbsp;CA 12345  USA
@@ -220,7 +220,7 @@
             <div class="textright">
               <input type="text" name="hideit" value="" style="display:none !important;">
               <button type="submit" title="Submit" class="button btn-sent"><span>Submit</span></button>
-              <img src="images/mgkloading1.html" alt="loader" id="loader" style="display:none;"> </div>
+              <img src={{ asset('images/mgkloading1.html') }} alt="loader" id="loader" style="display:none;"> </div>
             <!--textright--> 
           </div>
           <!--padding--> 

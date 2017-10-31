@@ -22,8 +22,8 @@ class CreatePostsTable extends Migration
             $table->dateTime('ending_day');
             $table->integer('salary');
             $table->string('slug');
-            $table->integer('city_id')->nullable();
-            $table->integer('recruitment_id')->nullable();
+            $table->integer('city_id');
+            $table->integer('recruitment_id');
             $table->timestamps();
         });
     }

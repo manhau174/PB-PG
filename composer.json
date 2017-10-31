@@ -8,6 +8,7 @@
         "php": ">=7.0.0",
         "cviebrock/eloquent-sluggable": "^4.3",
         "fideloper/proxy": "~3.3",
+        "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0"
     },
@@ -23,8 +24,11 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
-        }
+        "App\\": "app/"
+        },
+        "files": [
+            "app/Helper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

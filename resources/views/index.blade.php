@@ -1,6 +1,5 @@
 
 @extends('layouts.header')
-
 @section('content')
   
   <!-- Slider -->
@@ -96,17 +95,17 @@
                     <div class="col-item">
                       <div class="item-inner">
                         <div class="item-img">
-                          <div class="item-img-info"> <a href="product_detail.html"  title="Sample Product" class="product-image"> <img src="{{ asset($pb->images) }}" alt="Sample Product"></a>
+                          <div class="item-img-info"> <a href="product_detail.html" class="product-image"> <img src="{{ asset($pb->profile_picture) }}"></a>
                             <div class="item-box-hover">
                               <div class="box-inner">
-                                <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"> <span> Quick View</span></a></div>
+                                {{-- <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"> <span> Quick View</span></a></div> --}}
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="item-info">
                           <div class="info-inner">
-                            <div class="item-title"> <a href="product_detail.html" title="Sample Product"> {{$pb->full_name}} </a> </div>
+                            <div class="item-title"> <a href="product_detail.html"> {{$pb->full_name}} </a> </div>
                             <div class="item-content">
                               <div class="rating">
                                 <div class="ratings">
@@ -122,7 +121,7 @@
                             </div>
                           </div>
                           <div class="actions"><span class="add-to-links"> <!-- <a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> -->
-                            <button  title="show info" class="button btn-cart"><span><a href="{{route('profile')}}">Xem thông tin</a></span></button>
+                            <button  title="Show Info" class="button btn-cart"><span><a href="{{route('profile')}}">Xem thông tin</a></span></button>
                             <!-- <a href="compare.html" class="link-compare" title="Add to Compare"><span>Add to Compare</span></a> --></span> </div>
                         </div>
                       </div>
@@ -153,7 +152,7 @@
                     <div class="col-item">
                       <div class="item-inner">
                         <div class="item-img">
-                          <div class="item-img-info"> <a href="product_detail.html"  title="Sample Product" class="product-image"> <img src="{{ asset($pg->images) }}" alt="Sample Product"> </a>
+                          <div class="item-img-info"> <a href="product_detail.html"  title="Sample Product" class="product-image"> <img src="{{ asset($pg->profile_picture) }}" alt="Sample Product"> </a>
                             <div class="item-box-hover">
                               <div class="box-inner">
                                 <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"> <span> Quick View</span></a></div>
@@ -206,15 +205,6 @@
                   <div class="item">
                     <div class="col-item">
                       <div class="item-inner">
-                        {{-- <div class="item-img">
-                          <div class="item-img-info"> <a href="product_detail.html"  title="Sample Product" class="product-image"> <img src="{{$job}}" alt="Sample Product"> </a>
-                            <div class="item-box-hover">
-                              <div class="box-inner">
-                                <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"> <span> </span></a></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div> --}}
                         <div class="item-info">
                           <div class="info-inner">
                             <div class="item-title"> <a href="product_detail.html" title=""> {{$post->title}} </a>  </div>
@@ -226,9 +216,9 @@
                                 </div>
                             </div>
                           </div>
-                          <div class="actions"><span class="add-to-links"> <!-- <a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> -->
+                          <div class="actions"><span class="add-to-links">
                             <button  title="Read more" class="button btn-cart"><span><a href="{{ route('post.detail', ['slug' => $post->slug ] ) }}">Đọc thêm</a></span></button>
-                            <!-- <a href="compare.html" class="link-compare" title="Add to Compare"><span>Add to Compare</span></a> --></span> </div>
+                            </span> </div>
                         </div>
                       </div>
                     </div>

@@ -24,6 +24,15 @@ class RecruitmentsTableSeeder extends Seeder
             'mobile' => $faker->tollFreePhoneNumber(),
         ]);
         }
+        DB::table('recruitments')->insert([
+            'name' => "Mẫn Văn Hậu",
+            'email' => "manhau.recruitment@gmail.com",
+            'address' => "Hoàng Mai, Hà Nội",
+            'about' => $faker->text(),
+            'rate'  => $faker->biasedNumberBetween($min = 1, $max =5),
+            'user_id' => 11,
+            'mobile' => "01696461667",
+        ]);
         
     }
 }

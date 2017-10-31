@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,7 +92,7 @@
                 <!-- End Header Company -->
 
 
-                <div class="login"><a href="#"><span>Log In</span></a></div>
+               
                   
 
 
@@ -101,13 +102,16 @@
                   @else
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                               {{ Auth::user()->name }} <span class="caret"></span>
-                          </a>
+                    </a>
                     <ul class="dropdown-menu" role="menu">
                       @if (Auth::user()->permission == 2)
                         <li><a href="{{ route('post.create') }}">Đăng bài</a></li>
+                        <li><a href="{{ route('notifications') }}">Thông báo({{Data::CountNotification(Auth::user()->id)}})</a></li>
+                      <li><a href="{{ route('recruitment.list') }}">Bài đăng</a></li>
                       @elseif (Auth::user()->permission == 3)
                         <li><a href="{{ route('pbpg.create') }}">Đăng bài</a></li>
                       @endif
+                      
                       
                       
                       <li role="presentation">
@@ -459,7 +463,13 @@
               <li class="level1 parent"><a href="http://htmldemo.magikcommerce.com/ecommerce/accord_html/full-width/green/index.html"><span>Green Color</span></a> </li>
             </ul> -->
           </li>
-          <li class="level0 parent drop-menu"><a href="#"><span>Công việc</span> </a>
+        {{--   @guest
+                    <li class="level0 parent drop-menu"><a href="#"><span>Công việc</span> </a>
+                  @else
+                    <li class="level0 parent drop-menu"><a href="#"><span>D</span> </a>
+                    </a>
+          @endguest --}}
+          
             <!-- <ul style="display: none;" class="level1">
               <li class="level1 first"><a href="grid.html"><span>Grid</span></a></li>
               <li class="level1 nav-10-2"> <a href="list.html"> <span>List</span> </a> </li>

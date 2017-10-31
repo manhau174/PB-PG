@@ -29,37 +29,14 @@
                   <div class="product-name">
                     <h1>Họ và tên</h1>
                   </div>
-                  <div class="short-description">
-                    <p> Suspendisse eleifend ornare turpis. Sed ante justo, laoreet vel laoreet a, tristique id lacus. Donec iaculis neque vitae augue venenatis venenatis. Curabitur elementum orci justo, nec sollicitudin eros </p>
-                  </div>
-                  {{-- <div class="ratings">
-                    <div class="rating-box">
-                      <div style="width:60%" class="rating"></div>
-                    </div>
-                    <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Your Review</a> </p>
-                  </div> --}}
-                  {{-- <p class="availability in-stock">Availability: <span>In Stock</span></p>
-                  <div class="price-block">
-                    <div class="price-box">
-                      <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $315.99 </span> </p>
-                      <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $309.99 </span> </p>
-                    </div>
-                  </div> --}}
-                  <div class="add-to-box">
-                    
-                    <button type="button" title="Add to Cart" class="button btn-cart" onClick="productAddToCartForm.submit(this)"><span>Apply</span></button>
-                  </div>
-                  <div class="email-addto-box">
-                    <p class="email-friend"><a href="#" data-toggle="tooltip" data-placement="top" data-original-title="Email to a Friend"><span></span></a></p>
-                    <ul class="add-to-links">
-                      <li><span class="separator">|</span> <a class="link-compare" href="compare.html" data-toggle="tooltip" data-placement="top" data-original-title="Add to Compare"></a></li>
-                      <li> <a class="link-wishlist" href="wishlist.html"  data-toggle="tooltip" data-placement="top" data-original-title="Add to Wishlist"></a></li>
-                    </ul>
-                  </div>
-                  <div class="toggle-content">
-                    <div class="toggle toggle-white">
+                  
+                  
+                  
+                  
+                  <div class="">
+                    <div class=" ">
                       <h4 class="trigger"><a href="#">Miêu tả</a></h4>
-                      <div style="display: none;" class="toggle_container tabcontent">
+                      <div  class=" tabcontent">
                         <div class="std">
                           <p>Eastland's heritage, rugged 8-inch moc toe workboot selected from our design archives and crafted from the finest components available; Genuine Vibram&reg; Christy industrial outsole provides slip-resistance, durability and shock-absorbing cushioning for all-day<span class="read-more">… <a href="#">read more</a></span></p>
                           

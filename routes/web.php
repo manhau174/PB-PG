@@ -16,11 +16,6 @@
 
 Route::get('/', 'IndexController@showAll')->name('home');
 
-
-Route::get('/profile', function () {
-    return view('profile');
-});
-
 Route::get('/post/create', 'PostController@create')->name('post.create');
 
 Route::post('/post/store', 'PostController@store')->name('post.store');
@@ -31,6 +26,25 @@ Route::get('/pbpg/create', 'PbpgController@create')->name('pbpg.create');
 
 Route::post('/pbpg/store', 'PbpgController@store')->name('pbpg.store');
 
+Route::post('/post_pbpg/store/{post_id}', 'Post_pbpgController@store')->name('post_pbpg.store');
+
+Route::delete('/delete/{id}', 'PostController@destroy')->name('recruitment.delete');
+
+
+Route::get('/recruitment/list', 'PostController@listOfRecruitment')->name('recruitment.list');
+
+Route::get('/post/update/{id}', 'PostController@update')->name('post.update');
+
+Route::put('/post/edit/{id}', 'PostController@edit')->name('post.edit');
+
+Route::get('/recruitment/detail/{slug}', 'PostController@detail')->name('recruitment.detail');
+
+Route::get('/notifications', 'NotificationsController@show')->name('notifications');
+
+Route::get('/notification/{post_id}/{pbpg_id}','NotificationsController@detail')->name('notifications.detail');
+
+Route::get('/accept/{post_id}/{pbpg_id}', 'NotificationsController@accept')->name('notifications.accept');
+Route::get('sendmail/{pbpg}/{post}', 'MailController@sendMail')->name('sendmail');
 Route::get('/pb', function () {
     return view('pb');
 })->name('pb');
@@ -40,7 +54,7 @@ Route::get('/pg', function () {
 })->name('pg');
 
 Route::get('/profile', function () {
-    return view('profile');
+    return view('detail');
 })->name('profile');
 
 Route::get('user', 'UserController@index');
@@ -49,6 +63,7 @@ Route::get('/dashbord',function(){
 	return view('dashbord');
 })->name('admin');
 
+Route::get('/mail', 'NotificationsController@sendMail')->name('mail');
 
 
 Route::group(['prefix' => 'admin'], function(){

@@ -24,5 +24,21 @@ class UsersTableSeeder extends Seeder
                 
         	]);
         }
+        DB::table('users')->insert([
+                'name' => "Hậu Mẫn",
+                'email' => "manhau.recruitment@gmail.com",
+                'password' => '$2y$10$h12try.EAE9Jh7k8.a2yKuqnq96V9bl4o2R17peD.UAsHhrYdROmC',
+                'permission' => 2,
+                'remember_token' => str_random(10),
+                
+            ]);
+        DB::table('users')->insert([
+                'name' => "Hậu",
+                'email' => "manhau.174@gmail.com",
+                'password' => '$2y$10$h12try.EAE9Jh7k8.a2yKuqnq96V9bl4o2R17peD.UAsHhrYdROmC',
+                'permission' => 3,
+                'remember_token' => str_random(10),
+                
+            ]);
     }
 }

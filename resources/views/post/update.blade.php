@@ -17,58 +17,57 @@
           <h1>TIN TUYỂN DỤNG</h1>
         </div>
       </div>
-
       <div class="row">
         <section class="col-main col-sm-9 col-sm-offset-1">
           
-          <form action="{{ route('post.store') }}" method="POST" role="form">
+          <form action="{{ route('post.edit',['id'=>$post->id]) }}" method="POST" role="form">
             <legend>Tin tuyển dụng</legend>
             {{csrf_field()}}
             <div class="form-group">
               <label for="">Thành phố</label><br>
               <select name="city_id" >
-                <option selected="selected">--Chọn thành phố--</option>
+                <option>--Chọn thành phố--</option>
                 @foreach ($cities as $city)
-                  <option value="{{$city->id}}">{{$city->name}}</option>
+                  <option value="{{$city->id}}" >{{$city->name}}</option>
                 @endforeach
                 
                 {{-- <option value="3">PB&PG</option> --}}
                 
               </select>
             </div>
+
+            {{-- @foreach ($errors->all() as $message)
+              {{$message}}
+            @endforeach --}}
+            <input type="hidden" name="_method" value="PUT">
             <div class="form-group">
               <label for="">Tiêu đề</label>
-              <input type="text" class="form-control" name="title" placeholder="Input field" value="{{old('title')}}">
+              <input type="text" class="form-control" name="title" placeholder="Input field" value="{{$post->title}}">
             </div>
-
             @if (count($errors) > 0)
               <div class="alert alert-danger">                 
                      *{{ $errors->first('title') }}
               </div>
             @endif
-
             <div class="form-group">
               <label for="">Nội dung</label>
-              <textarea class="form-control" name="content" id="content">{{old('content')}}</textarea>
+              <textarea class="form-control" name="content" id="content">{!!$post->content!!}</textarea>
+              
             </div>
-
             @if (count($errors) > 0)
               <div class="alert alert-danger">                 
                      *{{ $errors->first('content') }}
               </div>
             @endif
-
             <div class="form-group">
               <label for="">Địa chỉ</label>
-              <input type="text" class="form-control" name="address" placeholder="Input field" value="{{old('address')}}">
+              <input type="text" class="form-control" name="address" placeholder="Input field" value="{{$post->address}}">
             </div>
-
             @if (count($errors) > 0)
               <div class="alert alert-danger">                 
                      *{{ $errors->first('address') }}
               </div>
             @endif
-
             {{-- <div class="form-group">
                 <div class='input-group date' id='datetimepicker5'>
                     <input type='text' class="form-control" />
@@ -91,31 +90,16 @@
             </script> --}}
             <div class="form-group">
               <label for="">Ngày bắt đầu</label>
-              <input type="date" class="form-control" name="starting_day" placeholder="Input field">
+              <input type="date" class="form-control" name="starting_day" placeholder="Input field" value="{{$post->starting_day}}">
             </div>
-
-            @if (count($errors) > 0)
-              <div class="alert alert-danger">                 
-                     *{{ $errors->first('starting_day') }}
-              </div>
-            @endif
-
             <div class="form-group">
               <label for="">Ngày kết thúc</label>
-              <input type="date" class="form-control" name="ending_day" placeholder="Input field">
+              <input type="date" class="form-control" name="ending_day" placeholder="Input field" value="{{$post->ending_day}}">
             </div>
-
-            @if (count($errors) > 0)
-              <div class="alert alert-danger">                 
-                     *{{ $errors->first('ending_day') }}
-              </div>
-            @endif
-
             <div class="form-group">
               <label for="">Lương</label>
-              <input type="text" class="form-control" name="salary" placeholder="Input field" value="{{old('salary')}}">
+              <input type="text" class="form-control" name="salary" placeholder="Input field" value={{$post->salary}}>
             </div>
-            
             @if (count($errors) > 0)
               <div class="alert alert-danger">                 
                      *{{ $errors->first('salary') }}

@@ -57,6 +57,7 @@ class LoginController extends Controller
     		}
     	}
     }
+}
 
     public function getlogout(){
         Auth::logout();
