@@ -26,6 +26,7 @@ class CreatePostsTable extends Migration
             $table->integer('city_id');
             $table->integer('recruitment_id');
 
+
             $table->timestamps();
         });
     }

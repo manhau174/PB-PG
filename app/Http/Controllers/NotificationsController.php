@@ -8,7 +8,8 @@ use App\Recruitment;
 use App\Post_pbpg;
 use App\Post;
 use App\PbPg;
-use App\Mail;
+use App\Mail\SendMail;
+use Mail;
 use Session;
 class NotificationsController extends Controller
 {
@@ -31,8 +32,8 @@ class NotificationsController extends Controller
 
     public function accept($post_id, $pbpg_id) {
         $post_pbpg = Post_pbpg::where('post_id',$post_id)->where('pbpg_id', $pbpg_id)->update(['status' => '1']);
-        $pbpg = PbPg::findOrFail($pbpgId);
-        $post = Post::findOrFail($postId);
+        $pbpg = PbPg::findOrFail($pbpg_id);
+        $post = Post::findOrFail($post_id);
         // dd($pbpg->email);
         Mail::to($pbpg->email)->send(new SendMail($pbpg,$post));
 

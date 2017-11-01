@@ -36,7 +36,7 @@ class SendMail extends Mailable
        
         return $this->view('mail')
                 ->with([
-                    'link' => $this->post->title,
+                    'post' => $this->post,
                     
                 ]);
     }

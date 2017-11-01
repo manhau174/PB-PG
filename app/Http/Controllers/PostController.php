@@ -9,15 +9,115 @@ use App\Recruitment;
 use App\PbPg;
 use App\Http\Requests\StorePostRequest;
 use Auth;
+
+
 class PostController extends Controller
 {
-    //
-    public function create(){
-    	$cities = City::all();
-    	
-    	return view('post.create', ['cities' => $cities]);
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $posts = Post::all();
+        return view('posts.posts' , [ 'posts' => $posts , 'content' => 'Post List']);
     }
-    public function store(StorePostRequest $request) {
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $recruitments = Recruitment::all();
+        $cities = City::all();
+        return view('posts.posts_create',['content' => 'Add new Post','cities' => $cities, 'recruitments' => $recruitments]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $data = $request->all();
+        Post::create($data);
+        return json_encode(array(
+            'error' => 0,
+        ));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $post = Post::find($id);
+        $recruitment = $post->recruitment()->first();
+        $city = $post->city->first();
+         return view('posts.posts_detail',['city'=>$city,'recruitment' => $recruitment, 'post' => $post , 'content' => 'Post Information']);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $post = Post::find($id);
+        $recruitments = Recruitment::all();
+        $cities = City::all();
+        return view('posts.posts_edit',['cities'=>$cities, 'recruitments' => $recruitments , 'post' => $post , 'content' => 'Edit Post Information']);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+
+        Post::find($id)->update($data);
+        return response()->json([
+            'error' => 0
+        ]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        Post::where('id',$id)->delete(); 
+        return response()->json([
+            'error' => 0,
+        ]);
+    }
+
+    public function create_post(){
+        $cities = City::all();
+        
+        return view('post.create', ['cities' => $cities]);
+    }
+
+    public function RecruitmentStore(StorePostRequest $request) {
+
         $data = $request->all();
         $user_id = Auth::user()->id;
         $recruitment = Recruitment::where('user_id', $user_id)->first();
@@ -27,19 +127,10 @@ class PostController extends Controller
         // dd($data);
         Post::create($data);
         return redirect()->route('home');
+
         
     }
-    public function update($id) {
-        $post = Post::find($id);
-        $cities = City::all();
-        return view('post.update', ['cities' => $cities, 'post' => $post]);
-    }
-    public function edit(StorePostRequest $request, $id) {
-        $data = $request->all();
-        $post = Post::find($id)->update($data);
-        return redirect()->back();
 
-    }
     public function detail($slug) {
         $post = Post::findPostBySlug($slug);
         $user_id = Auth::user()->id;
@@ -64,12 +155,48 @@ class PostController extends Controller
         $posts = $recruitment->posts;
         return view('recruitment.list',compact('posts'));
     }
-    
-    public function destroy($id)
+
+    public function RecruitmentDestroy($id)
     {
         Post::find($id)->delete(); 
         return redirect()->route('recruitment.list');
     }
+    
+}
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    // public function update($id) {
+    //     $post = Post::find($id);
+    //     $cities = City::all();
+    //     return view('post.update', ['cities' => $cities, 'post' => $post]);
+    // }
+    // public function edit(StorePostRequest $request, $id) {
+    //     $data = $request->all();
+    //     $post = Post::find($id)->update($data);
+    //     return redirect()->back();
+
+
+    // }
+    
+
+    
+    
    
   //   public function test(){
   //   	$post = new Post([
@@ -79,4 +206,4 @@ class PostController extends Controller
 		// $post->save();
 		// return $post->slug;
 	 //    }
-}
+

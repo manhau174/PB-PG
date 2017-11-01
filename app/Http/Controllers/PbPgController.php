@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PbPg;
-use App\albumPbPg;
 use App\User;
-use Auth;
-// use App\Post;
+use App\City;
 class PbPgController extends Controller
 {
     /**
@@ -17,13 +15,8 @@ class PbPgController extends Controller
      */
     public function index()
     {
-        $id = User::find(Auth::user()->id)->pbpg->id;
-
-        $recruitment = PbPg::find($id);
-
-        // dd($recruitment->posts);
-
-        return view('recruitmentPbPg',['recruitment' => $recruitment]);
+        $pbpgs = PbPg::all();
+        return view('pbpgs.pbpgs',['content' => 'Pb/Pg List' , 'pbpgs' => $pbpgs]);
     }
 
     /**
@@ -33,7 +26,8 @@ class PbPgController extends Controller
      */
     public function create()
     {
-        return view('updatePbPg');
+        $cities = City::all();
+        return view('pbpgs.pbpgs_create',['content' => 'Create new Pb/Pg','cities' => $cities]);
     }
 
     /**
@@ -44,29 +38,21 @@ class PbPgController extends Controller
      */
     public function store(Request $request)
     {
-        $pbpg = PbPg::create([
-            'full_name' => $request->full_name,
-            'address' => $request->address,
-            'email' => $request->email,
-            'mobile' => $request->mobile,
-            'description' => $request->description,
-            'gender' => $request->gender,
-            'city_id' => $request->city_id,
-            'profile_picture' => $request->profile_picture,
-            'height' => $request->height,
-            'weight' => $request->weight,
-            'user_id' => $request->user_id,
-        ]);
+        $data = $request->all();
+        if($request->hasFile('profile_picture')){
 
-        foreach ($request->images as $image) {
-            $filename = $image->store('images');
-            albumPbPg::create([
-                'pbpg_id' => $pbpg->id,
-                'images' => $filename
-            ]);
+            $path = $request->file('profile_picture')->store('profile_images');
+
+            $data['profile_picture'] = $path;
         }
-
-        return redirect()->route('updatePbPg.index');
+        $data['permission'] = 3;
+        $data['password'] = md5($data['password']);
+        $user = User::create($data);
+        $data['user_id'] = $user->id;
+        PbPg::create($data);
+        return response()->json([
+            'error' => 0,
+        ]);
     }
 
     /**
@@ -77,7 +63,10 @@ class PbPgController extends Controller
      */
     public function show($id)
     {
-        //
+        $pbpg = PbPg::find($id);
+        $user = $pbpg->user()->first();  
+        $city = $pbpg->city()->first();
+         return view('pbpgs.pbpgs_detail',['user' => $user, 'pbpg' => $pbpg , 'city' => $city , 'content' => 'PB/PG Information']);
     }
 
     /**
@@ -88,10 +77,8 @@ class PbPgController extends Controller
      */
     public function edit($id)
     {
-        // dd($id);
         $pbpg = PbPg::find($id);
-        // dd($id);
-        return view('editPbPg',['pbpg' => $pbpg]);
+        return view('pbpgs.pbpgs_edit',['pbpg' => $pbpg , 'content' => 'Edit PB/PG Information']);
     }
 
     /**
@@ -103,30 +90,11 @@ class PbPgController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pbpg = PbPg::find($id);
-        $pbpg->update([
-            'full_name' => $request->full_name,
-            'address' => $request->address,
-            'email' => $request->email,
-            'mobile' => $request->mobile,
-            'description' => $request->description,
-            'gender' => $request->gender,
-            'city_id' => $request->city_id,
-            'profile_picture' => $request->profile_picture,
-            'height' => $request->height,
-            'weight' => $request->weight,
-            'user_id' => $request->user_id,
+        $data = $request->all();
+        PbPg::find($id)->update($data);
+        return response()->json([
+            'error' => 0
         ]);
-
-        foreach ($request->images as $image) {
-            $filename = $image->store('images/PbPg');
-            albumPbPg::create([
-                'pbpg_id' => $pbpg->id,
-                'images' => $filename
-            ]);
-        }
-
-        return redirect()->route('updatePbPg.index');
     }
 
     /**
@@ -137,6 +105,25 @@ class PbPgController extends Controller
      */
     public function destroy($id)
     {
-        //
+        PbPg::where('id',$id)->delete(); 
+        return response()->json([
+            'error' => 0,
+        ]);
     }
+
+    public function checkEmail($email){
+        $users = User::all();
+        foreach ($users as $user) {
+            if($email == $user->email){
+                return json_encode(array(
+                    'error' => 1,
+                    'error_msg' => 'Email đã tồn tại',
+                ));
+            }
+        }
+        return json_encode(array(
+            'error' => 0
+        ));
+    }
+   
 }

@@ -73,12 +73,12 @@
                   
                   <div class="form-group">
                     <label for="">HEIGTH</label>
-                    <input type="text" class="form-control" id="" name="height" placeholder="Input field" value="{{$pbpg->full_name}}">
+                    <input type="text" class="form-control" id="" name="height" placeholder="Input field" value="{{$pbpg->height}}">
                   </div>
 
                   <div class="form-group">
                     <label for="">WEIGHT</label>
-                    <input type="text" class="form-control" id="" name="weight" placeholder="Input field" value="{{$pbpg->full_name}}">
+                    <input type="text" class="form-control" id="" name="weight" placeholder="Input field" value="{{$pbpg->weight}}">
                   </div>
                   @guest
 

@@ -17,13 +17,13 @@
 
 Route::get('/', 'IndexController@showAll')->name('home');
 
-Route::get('/post/create', 'PostController@create')->name('post.create');
+Route::get('/post/create', 'PostController@create_post')->name('post.create');
 
-Route::post('/post/store', 'PostController@store')->name('post.store');
+Route::post('/post/store', 'PostController@store_post')->name('post.store');
 
 Route::get('/post/{slug}', 'PostController@detail')->name('post.detail');
 
-Route::get('/pbpg/create', 'PbpgController@create')->name('pbpg.create');
+Route::get('/pbpg/create', 'PbpgController@create_pbpg')->name('pbpg.create');
 
 Route::post('/pbpg/store', 'PbpgController@store')->name('pbpg.store');
 
@@ -39,6 +39,8 @@ Route::get('/post/update/{id}', 'PostController@update')->name('post.update');
 Route::put('/post/edit/{id}', 'PostController@edit')->name('post.edit');
 
 Route::get('/recruitment/detail/{slug}', 'PostController@detail')->name('recruitment.detail');
+
+Route::delete('/recruitment/{id}', 'PostController@RecruitmentDestroy')->name('recruitment.delete');
 
 Route::get('/notifications', 'NotificationsController@show')->name('notifications');
 
@@ -58,10 +60,10 @@ Route::get('/profile', function () {
     return view('detail');
 })->name('profile');
 
-Route::get('user', 'UserController@index');
+// Route::get('user', 'UserController@index');
 
 Route::get('/dashbord',function(){
-	return view('dashbord');
+	return view('dashbord', ['content' => 'Dashbord']);
 })->name('admin');
 
 Route::get('/mail', 'NotificationsController@sendMail')->name('mail');
@@ -84,7 +86,7 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::get('quan-ly-nguoi-dung',function(){
 		return view('admin.userAdmin');
 	})->name('admin.user');
-	Route::get('user', 'UserController@index');
+	// Route::get('user', 'UserController@index');
 
 	Route::get('logout','LoginController@getlogout')->name('admin.logout');
 });
@@ -107,10 +109,16 @@ Route::post('register', 'client\RegisterClientController@store')->name('register
 /*route logout*/
 
 Route::get('logout','client\LoginController@getlogout')->name('logout');
-
+Route::get('/users/getView/{str}','UserController@getView');
+Route::get('/users/checkEmail/{email}','UserController@checkEmail');
+Route::get('/pbpgs/checkEmail/{email}','PbPgController@checkEmail');
+Route::get('/recruitments/checkEmail/{email}','RecruitmentController@checkEmail');
 /*end route logout*/
 
 
 Route::resource('users','UserController');
+Route::resource('recruitments','RecruitmentController');
+Route::resource('pbpgs','PbPgController');
+Route::resource('posts','PostController');
 
 Route::resource('/updatePbPg', 'PbPgController');

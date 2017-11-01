@@ -9,8 +9,12 @@ class Post extends Model
 {
     //
     use Sluggable;
+
     protected $table = "posts";
-    protected $fillable = ['title','content','address','starting_day','ending_day','salary','slug','city_id', 'recruitment_id','status'];
+
+    protected $fillable = ['title','content','address','starting_day','ending_day','salary','slug','city_id', 'recruitment_id','location','status'];
+
+
     public function sluggable()
     {
         return [
@@ -21,7 +25,6 @@ class Post extends Model
     }
     public static function findPostBySlug($slug) {
         return DB::table('posts')->where('slug', $slug)->first();
-        
     }
     public static function check($post_id, $pbpg_id) {
         $count = Post_pbpg::where('post_id',$post_id)->where('pbpg_id',$pbpg_id)->count();

@@ -20,15 +20,8 @@ class LoginController extends Controller
         
     	if (Auth::attempt(['email' => $email, 'password' => $password])) 
     	{
-            if (Auth::user()->permission == 3) {
-                
-                return redirect()->route('updatePbPg.index');
-            }
-            else{
-                return redirect()->route('home');
-            }
-    		
-
+                       
+            return redirect()->route('home');    	
     	}
     	else
     	{
