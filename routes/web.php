@@ -121,4 +121,5 @@ Route::resource('recruitments','RecruitmentController');
 Route::resource('pbpgs','PbPgController');
 Route::resource('posts','PostController');
 
-Route::resource('/updatePbPg', 'PbPgController');
+Route::get('/updatePbPg/{id}', 'PbPgController@PbPgEdit')->name('PbPg.edit');
+Route::put('/updatePbPg/{id}', 'PbPgController@PbPgUpdate')->name('PbPg.update');

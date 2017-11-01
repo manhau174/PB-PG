@@ -22,25 +22,29 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-9 col-sm-offset-1">
-				@if (Auth::user()->permission == 3)
-					<form action="{{ route('post_pbpg.store',['post_id' => $post->id])}}" method="POST" role="form">
-						{{csrf_field()}}
-						{{-- @if ($Post_pbpgController->check())
-							<button type="submit" class="btn btn-primary">Đã đăng ký</button>
-						@else --}}
-						@if ($check)
-							<h1 style="color: red">Đã đăng ký!</h1>
-						@else
-							<button type="submit" class="btn btn-primary">Đăng ký</button>
-						@endif
-							
+
+				@if (!empty(Auth::user()))
+					@if (Auth::user()->permission == 3)
 						
-						
+						<form action="{{ route('post_pbpg.store',['post_id' => $post->id])}}" method="POST" role="form">
+							{{csrf_field()}}
+							{{-- @if ($Post_pbpgController->check())
+								<button type="submit" class="btn btn-primary">Đã đăng ký</button>
+							@else --}}
+							@if ($check)
+								<h1 style="color: red">Đã đăng ký!</h1>
+							@else
+								<button type="submit" class="btn btn-primary">Đăng ký</button>
+							@endif
 								
+							
+													
+						</form>
+	            	@endif
+	            	 
+
+				@endif
 				
-						
-					</form>
-            	@endif
 			</div>			
 		</div>
 		

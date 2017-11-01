@@ -133,13 +133,13 @@
                       @elseif (Auth::user()->permission == 3)
                         <li><a href="{{ route('pbpg.create') }}">Đăng bài</a></li>
                         <li>
-                              <a href="{{ route('updatePbPg.create') }}">
+                              <a href="">
                                   Thêm Thông Tin
                               </a>
 
                           </li>
                           <li>
-                              <a href="{{ route('updatePbPg.edit',App\User::find(Auth::user()->id)->pbpg->id) }}">
+                              <a href="{{ route('PbPg.edit',App\User::find(Auth::user()->id)->pbpg->id) }}">
                                   Cập Nhật Thông Tin
                               </a>
 

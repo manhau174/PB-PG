@@ -133,16 +133,18 @@ class PostController extends Controller
 
     public function detail($slug) {
         $post = Post::findPostBySlug($slug);
-        $user_id = Auth::user()->id;
-        $pbpg = PbPg::where('user_id', $user_id)->first();
-        if (!empty($pbpg)) {
-           $pbpg_id = $pbpg->id;
-            $post_id = $post->id;   
-            $check = Post::check($post_id, $pbpg_id);
+        $check = 0;
+        if (!empty(Auth::user()->id)) {
+            $user_id = Auth::user()->id;
+            $pbpg = PbPg::where('user_id', $user_id)->first();
+            if (!empty($pbpg)) {
+               $pbpg_id = $pbpg->id;
+                $post_id = $post->id;   
+                $check = Post::check($post_id, $pbpg_id);
+            }
+            
         }
-        else{
-            $check = 0;
-        }
+        
         
         // $post = Post::where('slug', $slug)->first();
         return view('post.detail', ['post' => $post, 'check' => $check]);

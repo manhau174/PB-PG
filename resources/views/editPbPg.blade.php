@@ -12,7 +12,7 @@
             
             <li id="opc-billing" class="section allow active">
               <div id="checkout-step-billing" class="step a-item" style="">
-                <form action="{{ route('updatePbPg.update',$pbpg->id) }}" method="POST" role="form" enctype="multipart/form-data">
+                <form action="{{ route('PbPg.update',$pbpg->id) }}" method="POST" role="form" enctype="multipart/form-data">
                   {{csrf_field()}}
                   {{method_field('PUT')}}
                   <div class="form-group">

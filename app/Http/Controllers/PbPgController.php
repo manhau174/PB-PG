@@ -77,6 +77,7 @@ class PbPgController extends Controller
      */
     public function edit($id)
     {
+    	dd('xxx');
         $pbpg = PbPg::find($id);
         return view('pbpgs.pbpgs_edit',['pbpg' => $pbpg , 'content' => 'Edit PB/PG Information']);
     }
@@ -124,6 +125,46 @@ class PbPgController extends Controller
         return json_encode(array(
             'error' => 0
         ));
+    }
+
+    public function PbPgEdit($id)
+    {
+        // dd($id);
+        $pbpg = PbPg::find($id);
+        // dd($id);
+        return view('editPbPg',['pbpg' => $pbpg]);
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function PbPgUpdate(Request $request, $id)
+    {
+        $pbpg = PbPg::find($id);
+        $pbpg->update([
+            'full_name' => $request->full_name,
+            'address' => $request->address,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'description' => $request->description,
+            'gender' => $request->gender,
+            'city_id' => $request->city_id,
+            'profile_picture' => $request->profile_picture,
+            'height' => $request->height,
+            'weight' => $request->weight,
+            'user_id' => $request->user_id,
+        ]);
+        foreach ($request->images as $image) {
+            $filename = $image->store('images/PbPg');
+            albumPbPg::create([
+                'pbpg_id' => $pbpg->id,
+                'images' => $filename
+            ]);
+        }
+        return redirect()->route('updatePbPg.index');
     }
    
 }
