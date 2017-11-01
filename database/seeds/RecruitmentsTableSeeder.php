@@ -24,6 +24,7 @@ class RecruitmentsTableSeeder extends Seeder
             'mobile' => $faker->tollFreePhoneNumber(),
         ]);
         }
+
         DB::table('recruitments')->insert([
             'name' => "Mẫn Văn Hậu",
             'email' => "manhau.recruitment@gmail.com",
@@ -33,6 +34,7 @@ class RecruitmentsTableSeeder extends Seeder
             'user_id' => 11,
             'mobile' => "01696461667",
         ]);
+
         
     }
 }

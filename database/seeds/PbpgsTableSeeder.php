@@ -13,6 +13,7 @@ class PbpgsTableSeeder extends Seeder
     {
         //
         $faker = Faker\Factory::create();
+
         // for ($i=0; $i < 10 ; $i++) { 
         // 	DB::table('pb_pgs')->insert([
         // 		'full_name' => $faker->firstNameMale(),
@@ -171,5 +172,6 @@ class PbpgsTableSeeder extends Seeder
                 'gender'=>0,
                 'city_id' => 1
             ]);
+
     }
 }

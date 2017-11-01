@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\City;
+
 class CitiesTableSeeder extends Seeder
 {
     /**
@@ -13,11 +13,7 @@ class CitiesTableSeeder extends Seeder
     {
         //
         $faker = Faker\Factory::create();
-        // for ($i=0; $i < 10 ; $i++) { 
-        // 	DB::table('cities')->insert([
-        // 		'name' => $faker->name,
-        // 	]);
-        // }
+
         $city = new City();
         $city->name = "Hà Nội";
         $city->save();

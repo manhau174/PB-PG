@@ -237,10 +237,12 @@
 
 <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script> 
 <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script> 
+<script type="text/javascript" src="{{ asset('js/moment.js') }}"></script> 
 <script type="text/javascript" src="{{ asset('js/parallax.js') }}"></script> 
 <script type="text/javascript" src="{{ asset('js/common.js') }}"></script> 
 <script type="text/javascript" src="{{ asset('js/slider.js') }}"></script> 
 <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script> 
+
 
 
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
@@ -253,6 +255,9 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 
+
+<script type="text/javascript" src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script> 
+
 <script type="text/javascript">
     //<![CDATA[
 	jQuery(function() {
@@ -263,7 +268,16 @@
 		});
 	});
     //]]>
+    //
+   
     </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#datetimepicker1').datetimepicker({
+          format: 'YYYY-MM-DD',
+      });
+    });
+  </script>
 </body>
 
 <!-- Giao dien duoc chia se mien phi tai www.ptheme.net [Free HTML Download]. SKYPE[ptheme.net] - EMAIL[ptheme.net@gmail.com].-->

@@ -29,13 +29,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
     public static function getAll(){
         return DB::table('users')->get();
 
     }
-    public static function getUserByID($id){
+    
+
+    public static function getUserBy($email){
+
         
         return DB::table('users')->where('email',$email)->first();
+    }
+
+    public function pbpg(){
+        return $this->hasOne('App\PbPg');
     }
 }
 

@@ -26,7 +26,6 @@
 			<div class="col-md-9 col-md-offset-1">
 				@if (Data::check($post->id, $pbpg->id) == 0)
 					<a href="{{ route('notifications.accept', ['post_id'=>$post->id, 'pbpg_id'=>$pbpg->id]) }}" class="btn btn-primary">Nhận</a>
-
 				@endif
 			</div>  
 		</div>

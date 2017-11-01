@@ -9,7 +9,7 @@ use App\Recruitment;
 use Auth;
 class IndexController extends Controller
 {
-    //
+    
     public function showAll(){
 
 		

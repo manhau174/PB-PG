@@ -18,12 +18,14 @@ class CreatePostsTable extends Migration
             $table->string('title', 100);
             $table->text('content');
             $table->string('address', 100);
+
             $table->dateTime('starting_day');
             $table->dateTime('ending_day');
             $table->integer('salary');
             $table->string('slug');
             $table->integer('city_id');
             $table->integer('recruitment_id');
+
             $table->timestamps();
         });
     }

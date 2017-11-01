@@ -1,7 +1,7 @@
 
 @extends('layouts.header')
 @section('content')
-  
+  {{-- {{dd(App\User::all())}} --}}
   <!-- Slider -->
   <section class="slider-intro">
     <div class="container">
@@ -69,7 +69,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Offer Banner  --> 
   
   <!-- main container -->

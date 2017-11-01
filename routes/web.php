@@ -14,6 +14,7 @@
 
 
 
+
 Route::get('/', 'IndexController@showAll')->name('home');
 
 Route::get('/post/create', 'PostController@create')->name('post.create');
@@ -28,7 +29,7 @@ Route::post('/pbpg/store', 'PbpgController@store')->name('pbpg.store');
 
 Route::post('/post_pbpg/store/{post_id}', 'Post_pbpgController@store')->name('post_pbpg.store');
 
-Route::delete('/delete/{id}', 'PostController@destroy')->name('recruitment.delete');
+Route::delete('/delete/{id}', 'PostController@destroy')->name('delete');
 
 
 Route::get('/recruitment/list', 'PostController@listOfRecruitment')->name('recruitment.list');
@@ -112,3 +113,4 @@ Route::get('logout','client\LoginController@getlogout')->name('logout');
 
 Route::resource('users','UserController');
 
+Route::resource('/updatePbPg', 'PbPgController');

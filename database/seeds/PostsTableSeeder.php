@@ -53,9 +53,11 @@ class PostsTableSeeder extends Seeder
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->salary = 400000;
+
             $post->status = 1;
             $post->city_id = 2;
             $post->recruitment_id = 11;
+
             $post->save();
 
             
@@ -118,9 +120,11 @@ class PostsTableSeeder extends Seeder
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->salary = 4500000;
+
             $post->status = 0;
             $post->city_id = 2;
             $post->recruitment_id = 11;
+
             $post->save();
 
             $post = new Post();
@@ -177,9 +181,11 @@ class PostsTableSeeder extends Seeder
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->salary = 350000;
+
             $post->status = 1;
             $post->city_id = 4;
             $post->recruitment_id = 8;
+
             $post->save();
 
             $post = new Post();
@@ -204,9 +210,11 @@ class PostsTableSeeder extends Seeder
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->salary = 300000;
+
             $post->status = 1;
             $post->city_id = 4;
             $post->recruitment_id = 6;
+
             $post->save();
 
             $post = new Post();
@@ -238,6 +246,7 @@ class PostsTableSeeder extends Seeder
                             <p>Hoặc nộp trược tiếp tại&nbsp;<a href="http://mywork.com.vn/tuyen-dung/74/hanh-chinh-van-phong.html">văn ph&ograve;ng</a>&nbsp;c&ocirc;ng ty.<br /> &nbsp;ĐỊA CHỈ CTY : Cty TNHH C&ocirc;ng Nghệ MngSheng Việt Nam Tầng 4, Số 139 - Nam Kỳ Khởi Nghĩa &ndash; Phường 4 &ndash; Mỹ Tho &ndash; Tiền Giang. ĐT:0733.868.855 DĐ 0932.134.298 gặp &nbsp;Chị H&ograve;a&nbsp;</p>
                             </body>
                             </html>';
+
             $post->address = "TP Huế";
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
@@ -245,6 +254,7 @@ class PostsTableSeeder extends Seeder
             $post->status = 0;
             $post->city_id = 9;
             $post->recruitment_id = 5;
+
             $post->save();
 
             $post = new Post();
@@ -269,9 +279,11 @@ class PostsTableSeeder extends Seeder
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->salary = 400000;
+
             $post->status = 1;
             $post->city_id = 1;
             $post->recruitment_id = 10;
+
             $post->save();
 
             $post = new Post();
@@ -292,6 +304,7 @@ class PostsTableSeeder extends Seeder
                                 <p>- Đơn xin việc.<br /> - Sơ yếu l&yacute; lịch.<br /> - Hộ khẩu, chứng minh nh&acirc;n d&acirc;n v&agrave; giấy kh&aacute;m sức khỏe.<br /> - C&aacute;c bằng cấp c&oacute; li&ecirc;n quan.</p>
                                 </body>
                                 </html>';
+
             $post->address = "TP Vũng Tàu";
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
@@ -299,6 +312,7 @@ class PostsTableSeeder extends Seeder
             $post->status = 1;
             $post->city_id = 10;
             $post->recruitment_id = 3;
+
             $post->save();
 
             $post = new Post();
@@ -323,9 +337,11 @@ class PostsTableSeeder extends Seeder
             $post->starting_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->ending_day = $faker->date($format = 'Y-m-d', $max = 'now');
             $post->salary = 350000;
+
             $post->status = 0;
             $post->city_id = 5;
             $post->recruitment_id = 5;
+
             $post->save();
     }
 }

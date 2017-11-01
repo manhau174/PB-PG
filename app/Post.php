@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 use DB;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -38,4 +39,5 @@ class Post extends Model
     public function recruitment(){
         return $this->belongsTo('App\Recruitment');
     }
+
 }

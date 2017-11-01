@@ -45,19 +45,19 @@ class LoginController extends Controller
 
     		$user = User::getUserBy($email);
     		
-       		if( Auth::attempt(['email' => $email, 'password' =>$password, 'permission' => 1]) ) {
-    			return redirect()->intended('accept');
+       // 		if( Auth::attempt(['email' => $email, 'password' =>$password, 'permission' => 1]) ) {
+    			// return redirect()->intended('admin');
 
-       		if( Auth::attempt(['email' => $email, 'password' =>$password, 'permission' => 1]) ) {
-    			return redirect()->intended('admin/user');
+           		if( Auth::attempt(['email' => $email, 'password' =>$password, 'permission' => 1]) ) {
+        			return redirect()->intended('admin');
 
-    		} else {
-    			$errors = new MessageBag(['errorlogin' => 'Email hoặc mật khẩu không đúng']);
-    			return redirect()->back()->withInput()->withErrors($errors);
-    		}
-    	}
+        		} else {
+        			$errors = new MessageBag(['errorlogin' => 'Email hoặc mật khẩu không đúng']);
+        			return redirect()->back()->withInput()->withErrors($errors);
+        		}
+        	
+        }
     }
-}
 
     public function getlogout(){
         Auth::logout();
